@@ -1,0 +1,13 @@
+{
+  "derived_from": "0994dddb3d5a40092ffe443330b3bf4a0a5e55560be7a51f48d6e34537ce442f",
+  "recordings": [
+    {
+      "blanked": [],
+      "path": "runs/80f72f28/events.jsonl",
+      "sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "source_sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f"
+    }
+  ],
+  "redactions_version": 1,
+  "rules": []
+}

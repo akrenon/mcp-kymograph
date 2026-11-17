@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — verdict of a run</title>
+<script src="340d6c94-d6e6-44ef-b2be-57a883a76caa"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>recording schema 4 · rules v4</span>
+</div>
+</div>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #DADDE1">
+<nav aria-label="Run views" style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Inventory.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Driver inventory</a>
+<a href="Proxy.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Proxy session</a>
+<a href="Recording.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">HTTP recording</a>
+<a href="Sandbox.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Sandbox</a>
+<a href="Verdict.dc.html" aria-current="page" style="padding: 14px 12px; font-size: 14px; font-weight: 600; color: #14171A; text-decoration: none; border-bottom: 3px solid #2952A3">Verdict</a>
+<a href="Masking.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Masking</a>
+</nav>
+</div>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 22px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1 1 560px">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Verdict · read back from the recording, nowhere else</div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 600">A run that is not a result is not “did not find”</h1>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap">$ kymograph verdict {{run.path}}/events.jsonl</div>
+</div>
+<div role="group" aria-label="Example run" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="4">
+<button type="button" sc-camel-on-click="{{ m.pick }}" aria-pressed="{{ m.pressed }}" style="min-height: 44px; padding: 0 16px; border-radius: 22px; font: inherit; font-size: 14px; cursor: pointer; border: 1px solid {{m.border}}; background: {{m.bg}}; color: {{m.fg}}">{{m.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch">
+<div style="flex: 0 1 360px; min-width: 0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 8px; background: {{run.bg}}; color: {{run.fg}}; border: 1px solid {{run.border}}">
+<div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8">state</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 30px; font-weight: 600">{{run.state}}</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px">exit {{run.exit}}</div>
+<div style="font-size: 13px; line-height: 1.5; margin-top: 6px">{{run.meaning}}</div>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><h2 style="margin: 0; font-size: 16px; font-weight: 600">Causes — a fixed key beside the words</h2><span style="font-size: 12px; color: #555C64">{{run.entry}}</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{run.causes}}" as="c" hint-placeholder-count="2">
+<li style="display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 12px; align-items: start; border: 1px solid #E7EAEE; border-radius: 6px; padding: 10px 12px">
+<code style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600">{{c.key}}</code>
+<span style="font-size: 13px; color: #3F454B; line-height: 1.45">{{c.words}}</span>
+<span style="padding: 1px 8px; border-radius: 4px; font-size: 12px; font-family: 'IBM Plex Mono', monospace; white-space: nowrap; background: {{c.tagBg}}; color: {{c.tagFg}}">{{c.tag}}</span>
+</li>
+</sc-for>
+</ul>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">{{run.note}}</p>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px"><h2 style="margin: 0; font-size: 16px; font-weight: 600">What the recording holds — and where it falls short</h2><span style="font-size: 12px; color: #555C64">events in order · the last line is read back, never assumed</span></div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{run.events}}" as="e" hint-placeholder-count="8">
+<li style="flex: 1 1 150px; border: 1px solid {{e.border}}; background: {{e.bg}}; border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; border-style: {{e.style}}">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; word-break: break-all; color: {{e.fg}}">{{e.type}}</span>
+<span style="font-size: 12px; color: #3F454B">{{e.detail}}</span>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">verdict.CAUSES — can the server bring it about?</h2>
+<span style="font-size: 12px; color: #555C64">decides how a repeated series treats the run: worst case, or run again</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0">
+<div style="padding: 16px 18px; border-right: 1px solid #E7EAEE">
+<div style="font-size: 13px; font-weight: 600; color: #7A3300; margin-bottom: 8px">yes — stays in the worst case</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+<sc-for list="{{yes}}" as="k" hint-placeholder-count="12"><span style="background: #F8E1CC; color: #7A3300; padding: 2px 8px; border-radius: 4px">{{k}}</span></sc-for>
+</div>
+</div>
+<div style="padding: 16px 18px">
+<div style="font-size: 13px; font-weight: 600; color: #3F454B; margin-bottom: 8px">no — not counted, the repetition is run again (at most 5 per key)</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+<sc-for list="{{no}}" as="k" hint-placeholder-count="12"><span style="background: #ECEEF0; color: #3F454B; padding: 2px 8px; border-radius: 4px">{{k}}</span></sc-for>
+</div>
+</div>
+</div>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-size: 13px; color: #3F454B; line-height: 1.5"><code style="font-family: 'IBM Plex Mono', monospace">sandbox_failed</code> is one key for two phases: before the target exists it cannot be the server’s; after, collecting the account can fail under what the target sent. Until it is split, it counts as “yes”.</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">A recorded cap is complete</h2>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">One message records at most 20 findings. Past that, <code style="font-family: 'IBM Plex Mono', monospace">findings_capped</code> names every statement and signal it cut, with the true numbers. What was cut, and why, is known — the run is complete. If that event is lost, or its numbers do not add up, the run is incomplete again (<code style="font-family: 'IBM Plex Mono', monospace">cap_unaccounted</code>).</p>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">The same idea for pagination: a listing cut at the driver’s page limit is <code style="font-family: 'IBM Plex Mono', monospace">capped</code>, not complete — a truncated listing must not read as a full one. A comparison marks a gone finding whose pair the later run cut (<a href="Compare.dc.html">cap_hint</a>).</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Whose exit code is it?</h2>
+<sc-raw-table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<sc-raw-tbody>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0; font-family: 'IBM Plex Mono', monospace">drive</sc-raw-td><sc-raw-td style="padding: 8px; color: #3F454B">the run’s state; the server’s own exit is recorded (<code style="font-family: 'IBM Plex Mono', monospace">server_exited</code>) and said on the terminal, never handed through</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0; font-family: 'IBM Plex Mono', monospace">run</sc-raw-td><sc-raw-td style="padding: 8px; color: #3F454B">the server’s — a client started us in the server’s place. A server ending with 2, 3, 4, 5 or 70 then looks like one of our codes; the terminal says so</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0; font-family: 'IBM Plex Mono', monospace">both</sc-raw-td><sc-raw-td style="padding: 8px; color: #3F454B">a server that never started, or wrote nothing before it ended, is <code style="font-family: 'IBM Plex Mono', monospace">server_failed</code> and exits 4 — there is no observed outcome to hand through</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0; font-family: 'IBM Plex Mono', monospace">verdict</sc-raw-td><sc-raw-td style="padding: 8px; color: #3F454B">JSON on stdout, exits with the state’s code — the one place a run’s state lives is its recording</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1750}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'incomplete' };
+  }
+  renderVals() {
+    const YES = ['#F8E1CC', '#7A3300', 'server can cause'], NO = ['#ECEEF0', '#3F454B', 'server cannot cause'];
+    const ev = (type, detail, kind) => {
+      const k = { ok: ['#C3C8CE', '#FFFFFF', '#14171A', 'solid'], bad: ['#E3A6A6', '#FDF1F1', '#8E1B1B', 'solid'], missing: ['#8C939B', '#F5F6F7', '#555C64', 'dashed'], cap: ['#E2D394', '#FBF7E6', '#5C4700', 'solid'] }[kind];
+      return { type, detail, border: k[0], bg: k[1], fg: k[2], style: k[3] };
+    };
+    const runs = {
+      incomplete: {
+        label: 'incomplete · 3', path: 'runs/20261008T091944-11ae', entry: 'notes-legacy × all-signals · runc', state: 'incomplete', exit: 3,
+        bg: '#F8E1CC', fg: '#4A1F00', border: '#E7B98F',
+        meaning: 'Data is missing. The run may have found more than it shows; a comparison treats what it calls gone as possibly only missing (diff exits 3).',
+        causes: [
+          { key: 'udp_loss', words: 'the sink missed 1 of 2 datagrams the server sent; what it carried — a name, a payload — was not observed. Limit: none.', t: YES },
+          { key: 'step_unanswered', words: 'resources/list went out and no answer came within 30 s (reason no_answer, pages 0)', t: YES }
+        ],
+        note: 'Both causes are ones the server can bring about — so in a repeated series this run stays in the worst case: a hit for “absent”, a miss for “present”.',
+        events: [ev('run_started', 'mode driver · reproduction triple', 'ok'), ev('message ×11', 'handshake, tools/list 2 pages', 'ok'), ev('finding ×3', 'all counted', 'ok'), ev('step_unanswered', 'resources/list · no_answer', 'bad'), ev('egress_summary', 'udp counted 2 · received 1 · lost 1', 'bad'), ev('script_finished', 'inventory partial', 'bad'), ev('run_finished', 'counts written on the path that cannot drop', 'ok')]
+      },
+      server_failed: {
+        label: 'server_failed · 4', path: 'runs/20261008T092301-7d02', entry: 'clock-server × all-signals · runc', state: 'server_failed', exit: 4,
+        bg: '#F6D9D9', fg: '#5E1212', border: '#E3A6A6',
+        meaning: 'Nothing was observed. The server never started, never completed the handshake, or said nothing at all.',
+        causes: [
+          { key: 'server_silent', words: 'the server’s process ran 0.8 s, wrote nothing to its stdout and ended with 1', t: YES }
+        ],
+        note: 'The server’s exit code 1 is recorded and said on the terminal — not handed through. A proxied server that answered and then ended with 4 would be a complete run whose server ended with 4, never server_failed.',
+        events: [ev('run_started', 'mode driver', 'ok'), ev('sandbox_step ×9', 'every condition held', 'ok'), ev('server_exited', 'code 1 · after 0.8 s', 'bad'), ev('server_failed', 'cause server_silent', 'bad'), ev('step_skipped ×4', 'handshake_incomplete', 'ok'), ev('script_finished', 'inventory none', 'ok'), ev('run_finished', 'observations 0 · findings 0', 'ok')]
+      },
+      sandbox_failed: {
+        label: 'sandbox_failed · 5', path: 'runs/20261008T092655-c3a9', entry: 'weather-http × all-signals · runc', state: 'sandbox_failed', exit: 5,
+        bg: '#E6DDF5', fg: '#2E1A54', border: '#C9B8E8',
+        meaning: 'The isolation, or the observation of what the server sent, did not hold. No server process was started.',
+        causes: [
+          { key: 'images_mismatch', words: 'the recording names target sha256:91fd2e…c3b0; the fleet resolved sha256:0b77e1…54aa before the first run', t: NO }
+        ],
+        note: 'The environment failed this run, not the server. In a repeated series it is not counted — not in n, not unknown — and its repetition index is run again, outside the budget.',
+        events: [ev('run_started', 'isolation runc · images by id', 'ok'), ev('sandbox_step ×4', 'sink, helper, armed, bridge', 'ok'), ev('sandbox_step probe', 'udp6 never arrived', 'bad'), ev('sandbox_failed', 'images_mismatch · gate not reached', 'bad'), ev('server_failed', 'not written — no server existed', 'missing'), ev('run_finished', 'written', 'ok')]
+      },
+      capped: {
+        label: 'complete, capped · 0', path: 'runs/20261008T093120-5e7b', entry: 'poison-server × all-signals · runc', state: 'complete', exit: 0,
+        bg: '#DCEFE4', fg: '#0F3D26', border: '#A8D3B9',
+        meaning: 'A result. One message carried more findings than the cap of 20 — what was cut, and why, is known exactly, so completeness holds.',
+        causes: [
+          { key: '— (none)', words: 'findings_capped: tool-metadata/hidden_comment cut 7 of 19, tool-metadata/model_addressed cut 4 of 12; the counts add up', t: ['#DCEFE4', '#0F5132', 'recorded cap'] }
+        ],
+        note: 'The driver’s page limit is the same idea: a listing cut at the limit ends the inventory as “capped”, never “complete”. Both are known shortfalls, and both leave a cap_hint in a comparison.',
+        events: [ev('run_started', 'mode driver', 'ok'), ev('message tools/list', '3 pages · page_limit_reached at 3', 'cap'), ev('finding ×20', 'the cap, in walk order', 'ok'), ev('findings_capped', '2 pairs cut · true numbers 19 and 12', 'cap'), ev('step_unanswered', 'tools/list · pages 3 · page_limit_reached', 'cap'), ev('script_finished', 'inventory capped', 'cap'), ev('run_finished', 'findings_by_statement repeats the true counts', 'ok')]
+      }
+    };
+    const m = this.state.mode;
+    const run = runs[m];
+    run.causes = run.causes.map((c) => ({ ...c, tagBg: c.t[0], tagFg: c.t[1], tag: c.t[2] }));
+    const modes = Object.keys(runs).map((id) => {
+      const on = m === id;
+      return { label: runs[id].label, pressed: on ? 'true' : 'false', bg: on ? '#14171A' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14171A', border: on ? '#14171A' : '#C3C8CE', pick: () => this.setState({ mode: id }) };
+    });
+    const yes = ['line', 'no_run_finished', 'recording_stopped', 'unwritten_events', 'inspection_bounded', 'findings_missing', 'step_unanswered', 'step_not_sent', 'no_script_finished', 'no_egress_summary', 'udp_loss', 'server_failed', 'server_silent', 'sandbox_failed', 'egress_inconsistent'];
+    const no = ['unreadable', 'schema', 'no_run_started', 'counts_missing', 'findings_uncounted', 'cap_unaccounted', 'unknown_isolation', 'udp_loss_unknown', 'server_output_unknown', 'empty_session', 'images_mismatch', 'unfiled_finding', 'interrupted'];
+    return { run, modes, yes, no };
+  }
+}
+</script>
+
+
+</body></html>

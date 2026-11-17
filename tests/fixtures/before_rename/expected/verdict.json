@@ -1,0 +1,15 @@
+{
+  "recording": "runs/before-rename/runs/20261117T114140Z-80f72f28/events.jsonl",
+  "state": "complete",
+  "exit_code": 0,
+  "rules": 14,
+  "causes": [],
+  "problems": [],
+  "server_exit": {
+    "exit_code": 0,
+    "signal": null
+  },
+  "truncations": [],
+  "isolation": "host",
+  "egress_observed": false
+}

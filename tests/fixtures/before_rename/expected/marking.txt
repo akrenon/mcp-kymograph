@@ -1,0 +1,7 @@
+run: complete
+engagement: acme-2026-11
+marking: delimited (an observation, not a severity)
+deliveries: 1
+  canary page-1, message 12, result.content[0].resource.text: delimited (ABCD); to confirm: code-fence; breakout_unchecked
+not delivered: row-7
+not read: 0 message(s), not JSON or cut off

@@ -1,0 +1,19 @@
+{
+  "engagement": "acme-2026-11",
+  "canaries": [
+    {
+      "id": "page-1",
+      "kind": "file",
+      "where": "notes/today.txt",
+      "path": "/srv/canary/today.txt",
+      "value": "polygraph-canary-8084606adc168248"
+    },
+    {
+      "id": "row-7",
+      "kind": "tool_text",
+      "where": "orders, row 7",
+      "path": null,
+      "value": "polygraph-canary-6daa49d8815ed0c2"
+    }
+  ]
+}

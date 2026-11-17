@@ -1,0 +1,70 @@
+{
+  "bundle": "intact",
+  "intact": true,
+  "directory": "runs/before-rename/handover",
+  "index_digest": "b2ad40f365ead1e8d1f98526ce945fbe54546d6455422e7f538fd7d2189e283a",
+  "index_digest_expected": "b2ad40f365ead1e8d1f98526ce945fbe54546d6455422e7f538fd7d2189e283a",
+  "index_digest_matches": true,
+  "engagement": {
+    "engagement_id_declared": "acme-2026-11",
+    "engagement_digest": "5a4238d21034bbe280976cdd9b22c990e7468a78995ee4d0e58208407546bd20"
+  },
+  "created_utc": "2026-11-17T11:41:44.118130Z",
+  "derived_from": "0994dddb3d5a40092ffe443330b3bf4a0a5e55560be7a51f48d6e34537ce442f",
+  "files": [
+    {
+      "path": "engagement.json",
+      "state": "intact",
+      "role": "engagement",
+      "expected_sha256": "2d55737f2882169f9ee43a9658f2dee44ab14c3f9e63c17b13d386e10688de56",
+      "expected_size": 705,
+      "sha256": "2d55737f2882169f9ee43a9658f2dee44ab14c3f9e63c17b13d386e10688de56",
+      "size": 705,
+      "note": null
+    },
+    {
+      "path": "redactions.json",
+      "state": "intact",
+      "role": "redactions",
+      "expected_sha256": "efe0bef31f2b8c216097a0b38cf029fd02d5f06fe245db91e94e341893db512f",
+      "expected_size": 405,
+      "sha256": "efe0bef31f2b8c216097a0b38cf029fd02d5f06fe245db91e94e341893db512f",
+      "size": 405,
+      "note": null
+    },
+    {
+      "path": "runs/80f72f28/events.jsonl",
+      "state": "intact",
+      "role": "recording",
+      "expected_sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "expected_size": 9086,
+      "sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "size": 9086,
+      "note": null
+    },
+    {
+      "path": "scripts/cd8c1e0b70a7768f82b916983e92fb63ce22f528566e66a79fe95540cfd914c9.json",
+      "state": "intact",
+      "role": "script",
+      "expected_sha256": "c0c445449887155e70325ad6c6c1027957ebe242309c7f1ace2c19218ecdd60d",
+      "expected_size": 205,
+      "sha256": "c0c445449887155e70325ad6c6c1027957ebe242309c7f1ace2c19218ecdd60d",
+      "size": 205,
+      "note": null
+    },
+    {
+      "path": "tool.json",
+      "state": "intact",
+      "role": "tool",
+      "expected_sha256": "47ecf78a58e9903ebb29feba54c142482b7f018857477cbd499cada5b88bea22",
+      "expected_size": 210,
+      "sha256": "47ecf78a58e9903ebb29feba54c142482b7f018857477cbd499cada5b88bea22",
+      "size": 210,
+      "note": null
+    }
+  ],
+  "unlisted": [],
+  "signature": null,
+  "readme": "present; the page this bundle's index, engagement.json and redactions.json give",
+  "problems": []
+}

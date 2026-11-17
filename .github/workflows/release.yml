@@ -1,0 +1,75 @@
+name: Release
+
+# Manual only. Start it from the Actions tab on a tag v<version>. Nothing here runs on a push.
+on:
+  workflow_dispatch:
+
+# No permission by default. Each job asks for what it needs.
+permissions: {}
+
+jobs:
+  build:
+    name: build sdist and wheel
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # The whole history, so that the step below can see whether the tag is on main.
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.0"
+          enable-cache: false
+      - name: The run must start from a tag on main that matches the version
+        env:
+          REF: ${{ github.ref }}
+        run: |
+          version=$(python3 -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          package=$(sed -n 's/^__version__ = "\(.*\)"$/\1/p' src/mcp_kymograph/__init__.py)
+          if [ "$REF" != "refs/tags/v$version" ]; then
+            echo "::error::started on $REF, but pyproject.toml says $version: start this workflow on the tag v$version"
+            exit 1
+          fi
+          if [ "$package" != "$version" ]; then
+            echo "::error::pyproject.toml says $version, the package says $package"
+            exit 1
+          fi
+          if ! git merge-base --is-ancestor HEAD refs/remotes/origin/main; then
+            echo "::error::the tagged commit is not on main"
+            exit 1
+          fi
+      # The publish step checks the metadata of both files before it uploads them, so no
+      # further tool runs between the build and the upload.
+      - name: Build
+        run: uv build
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # The trusted publisher on PyPI names this workflow file and this environment.
+    environment:
+      name: pypi
+      url: https://pypi.org/project/mcp-kymograph/
+    permissions:
+      # Trusted Publishing: PyPI accepts the short-lived OIDC token of this job. No API token
+      # and no secret is stored. The same token signs the attestations.
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          attestations: true

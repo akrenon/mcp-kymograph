@@ -1,0 +1,57 @@
+# The patterns by which `engagement marking` recognises, around a canary in an answer, that the
+# server marked foreign content as foreign. Open data, read by mcp_kymograph.marking
+# (docs/content-marking.md). A match is never more than "to be confirmed": a person reads the
+# answer and says whether it is so.
+#
+# `supports` lists the properties a match gives: A (the source is named), B (the beginning of the
+# foreign block is delimited), C (its end). `kind` is
+#   label: `regex` matches before the canary, in the same string;
+#   fence: `regex` matches the one delimiter that opens and closes; one before the canary and one
+#          after it make the pair;
+#   pair:  `open` matches before the canary and `close` after it.
+# `notes` may hold `breakout_unchecked`: the delimiter can be written by the foreign content
+# itself, and the rule does not yet check that it was not.
+#
+# The boundaries of JSON or Python strings (quotes, repr) are not patterns: they are no B and C.
+# A line starts after a `\n` or after a `\r` (CommonMark also ends a line at a bare CR), so the
+# line-based expressions read both and do not rely on `^` and `$` alone.
+# Every expression is bounded and without nested repetition, so that it is read in linear time.
+version: 1
+patterns:
+  - id: code-fence
+    kind: fence
+    supports: [B, C]
+    notes: [breakout_unchecked]
+    regex: '(?m)(?:^|(?<=\r)) {0,3}(?:`{3,}|~{3,})'
+  - id: untrusted-tag
+    kind: pair
+    supports: [B, C]
+    open: '(?i)<untrusted[^<>]{0,200}>'
+    close: '(?i)</untrusted[^<>]{0,200}>'
+  - id: external-tag
+    kind: pair
+    supports: [B, C]
+    open: '(?i)<external[^<>]{0,200}>'
+    close: '(?i)</external[^<>]{0,200}>'
+  - id: begin-end
+    kind: pair
+    supports: [B, C]
+    open: '(?m)(?:^|(?<=\r))[ =#*-]{0,20}BEGIN [^\r\n]{1,100}(?=[\r\n]|\Z)'
+    close: '(?m)(?:^|(?<=\r))[ =#*-]{0,20}END [^\r\n]{1,100}(?=[\r\n]|\Z)'
+  - id: contents-of
+    kind: label
+    supports: [A, B]
+    regex: 'Contents of \S+:(?=\s|$)'
+  - id: page-url
+    kind: label
+    supports: [A, B]
+    regex: 'Page URL: \S+'
+  - id: message-label
+    kind: label
+    supports: [B]
+    regex: 'Message: '
+  # Only B and A: the hash names where the text comes from, and nothing marks its end.
+  - id: commit-label
+    kind: label
+    supports: [A, B]
+    regex: 'Commit: [0-9a-f]{7,40}'

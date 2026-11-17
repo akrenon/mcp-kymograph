@@ -1,0 +1,10 @@
+version: 1
+name: read-note
+steps:
+  - initialize
+  - list: tools/list
+  - call:
+      tool: read_note
+      arguments: {path: "{fixture_dir}/kanarie.txt"}
+      check: result.content[*].text
+      timeout: 20

@@ -1,0 +1,16 @@
+# The hostile fixture as a corpus entry, for tests/test_web_hostile.py. A poison entry: its
+# server is written to be read, not trusted. The descriptions are hostile on purpose, too: a
+# manifest is a string off the wire for the web interface.
+version: 1
+description: '<a href="javascript:alert(1)">click</a>'
+
+entries:
+  - name: hostile-server
+    description: "<img src=x onerror=alert(1)>"
+    provenance: poison
+    source:
+      paths: [hostile_server.py]
+    launch:
+      transport: stdio
+      command: ["{python}", "{dir}/hostile_server.py"]
+    scenarios: [hostile-scenario.yaml]

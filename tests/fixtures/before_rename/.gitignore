@@ -1,0 +1,4 @@
+# An exception to the repository's rule that no recording is tracked: the recordings among the
+# data the tool wrote before it was renamed, which tests/test_before_rename.py reads. Made
+# against fixture servers of this repository, with no traffic from anywhere.
+!*.jsonl

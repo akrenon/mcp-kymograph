@@ -1,0 +1,14 @@
+# A scenario that is selected and changes nothing.
+#
+# Valid on purpose: it is the case the engagement gate has to reach. Selecting a scenario
+# states the intent to alter traffic, whatever the file turns out to hold — an empty file,
+# every rule commented out, as here.
+version: 1
+name: empty
+rules:
+#  - name: poison
+#    match: {direction: server_to_client, method: tools/list}
+#    action: inject
+#    path: result.tools[*].description
+#    text: " [INJECTED]"
+observations:

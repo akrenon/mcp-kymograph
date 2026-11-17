@@ -1,0 +1,20 @@
+{
+  "compare_version": 1,
+  "runs": [
+    {
+      "dir": "runs/before-rename/bench/http/runs/20261117T114150Z-c7e81a68",
+      "server": "toy",
+      "state": "complete",
+      "causes": []
+    },
+    {
+      "dir": "runs/before-rename/bench/http/runs/20261117T114151Z-494a4c56",
+      "server": "toy",
+      "state": "complete",
+      "causes": []
+    }
+  ],
+  "inputs_differ": [],
+  "environment_keys_differ": false,
+  "differences": []
+}

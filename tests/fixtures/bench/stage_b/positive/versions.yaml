@@ -1,0 +1,29 @@
+# The positive control of stage B over a volume: the server reads the file the fixture holds.
+# The image context is ../server (a Dockerfile); the test that builds it adds stage_b_server.py,
+# which COPY needs inside the context.
+version: 1
+servers:
+  - name: stage-b-positive
+    provenance: real-world
+    archived: false
+    package:
+      registry: pypi
+      name: stage-b-positive
+      version: "0.0.1"
+      integrity: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    source:
+      repository: example/servers
+      commit: "1111111111111111111111111111111111111111"
+      path: tests/fixtures/bench/stage_b_server.py
+    image:
+      context: ../server
+      base: "python:3.12-slim@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1"
+    launch:
+      args: []
+    stage_a:
+      status: active
+    stage_b:
+      status: active
+      fixture: positive
+      script: read-note.yaml
+      args: []

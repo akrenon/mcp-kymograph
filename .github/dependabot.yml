@@ -1,0 +1,11 @@
+version: 2
+
+updates:
+  # The pinned dev dependencies and uv.lock never receive a fix on their own. Dependabot
+  # turns what would be a silent update into a pull request that gets read before it runs.
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"

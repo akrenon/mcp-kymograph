@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — fleet comparison</title>
+<script src="6e49d889-29f1-4198-aa99-ad0453a2db09"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>store findings.sqlite · schema 9</span>
+<span>rules v4</span>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 24px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Fleet comparison</div>
+<h1 style="margin: 0; font-size: 32px; font-weight: 600">f-0041 <span style="color: #555C64; font-weight: 400">→</span> f-0042</h1>
+<div style="font-size: 14px; color: #3F454B">1 Oct 2026 → 8 Oct 2026 · both repeated · both judged under rules v4</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap">$ kymograph fleet diff --store findings.sqlite</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 12px 16px; font-size: 13px"><div style="color: #555C64">same_result</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600; margin-top: 2px">false</div></div>
+<div style="background: #F8E1CC; border: 1px solid #E7B98F; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #5A2600"><div>exit code</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600; margin-top: 2px">3 · incomplete</div></div>
+</div>
+</section>
+
+<section aria-label="Totals" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 14px 16px"><div style="font-size: 13px; color: #555C64">new</div><div style="font-size: 28px; font-weight: 600; margin-top: 4px; color: #1E3A8A">1 <span style="font-size: 13px; font-weight: 400; color: #555C64">+ 2 statement_added</span></div></div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 14px 16px"><div style="font-size: 13px; color: #555C64">gone</div><div style="font-size: 28px; font-weight: 600; margin-top: 4px; color: #7A3300">1 <span style="font-size: 13px; font-weight: 400; color: #555C64">+ 1 cap_hint · 1 statement_removed</span></div></div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 14px 16px"><div style="font-size: 13px; color: #555C64">rate moved (flagged)</div><div style="font-size: 28px; font-weight: 600; margin-top: 4px">2 <span style="font-size: 14px; font-weight: 400; color: #555C64">of 4 tested</span></div></div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 14px 16px"><div style="font-size: 13px; color: #555C64">unchanged</div><div style="font-size: 28px; font-weight: 600; margin-top: 4px">88</div></div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 14px 16px"><div style="font-size: 13px; color: #555C64">not comparable</div><div style="font-size: 28px; font-weight: 600; margin-top: 4px; color: #7A3300">1 key</div></div>
+</section>
+
+<section aria-labelledby="ng-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 16px 20px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="ng-h" style="margin: 0; font-size: 18px; font-weight: 600">New and gone</h2>
+<span style="font-size: 13px; color: #555C64">Both sides decided by their tests. Matched on the key without its version fields.</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1040px; border-collapse: collapse; font-size: 14px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Change</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Entry × scenario</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Locator · signal</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Class</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Attributed to</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 14px 20px"><span style="display: inline-block; padding: 2px 10px; border-radius: 4px; background: #DCE6F9; color: #1E3A8A; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600">new</span></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">weather-http × all-signals</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; word-break: break-all">result.tools[name="get_forecast"].description<div style="font-weight: 600; margin-top: 2px">hidden_comment</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-size: 13px">absent → stable<div style="color: #555C64; margin-top: 2px">0/48 → 48/48</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 20px; font-size: 13px"><strong>server</strong> — content sha256:1c07…b9e4 → sha256:9e52…0a1d</sc-raw-td>
+</sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 14px 20px"><span style="display: inline-block; padding: 2px 10px; border-radius: 4px; background: #F8E1CC; color: #7A3300; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600">gone</span></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">weather-http × all-signals</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; word-break: break-all">result.tools[name="get_alerts"].description<div style="font-weight: 600; margin-top: 2px">output_directive</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-size: 13px">stable → absent<div style="color: #555C64; margin-top: 2px">absent: below 10 % at β = 0.01 (sequential test, 48 runs)</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 20px; font-size: 13px"><strong>server</strong> — the same move; miss rate of “absent” β = 0.01</sc-raw-td>
+</sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top; background: #FBF7E6">
+<sc-raw-td style="padding: 14px 20px"><span style="display: inline-block; padding: 2px 10px; border-radius: 4px; background: #F8E1CC; color: #7A3300; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600">gone</span><div style="margin-top: 6px"><span style="display: inline-block; padding: 1px 8px; border-radius: 4px; background: #E2D394; color: #3D3000; font-family: 'IBM Plex Mono', monospace; font-size: 11px">cap_hint</span></div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">clock-server × all-signals</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; word-break: break-all">result.tools[name="now"].description<div style="font-weight: 600; margin-top: 2px">whitespace_padding</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-size: 13px">stable → not sighted<div style="color: #555C64; margin-top: 2px">f-0042 cut tool-metadata/whitespace_padding at the per-message cap in 9 runs</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 20px; font-size: 13px"><strong>not attributed</strong> — may only be missing; the gone set is flagged</sc-raw-td>
+</sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+
+<section aria-labelledby="drift-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 16px 20px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="drift-h" style="margin: 0; font-size: 18px; font-weight: 600">Scenario drift — the same name, other content</h2>
+<span style="font-size: 13px; color: #555C64">complete data answering another question: the comparison keeps its value and its exit code</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 0">
+<div style="flex: 1 1 380px; min-width: 0; padding: 16px 20px; border-right: 1px solid #E7EAEE; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600">notes-legacy × tool-poisoning</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #3F454B; line-height: 1.7">scenario tool-poisoning<br>digest sha256:77b0d3…41ee → sha256:91c2a8…6f03<br>statements: 3 → 3 · one added, one removed</div>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">The new and gone sets for this key carry the caveat <code style="font-family: 'IBM Plex Mono', monospace">scenario_drift</code>; every finding whose statement exists on one side only is marked.</p>
+</div>
+<div style="flex: 2 1 560px; min-width: 0; overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 520px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em"><sc-raw-th scope="col" style="padding: 10px 16px; font-weight: 600">Mark</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Statement · locator · signal</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 16px; font-weight: 600">Class</sc-raw-th></sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 12px 16px"><span style="padding: 1px 8px; border-radius: 4px; background: #DCE6F9; color: #1E3A8A; font-size: 12px">statement_added</span></sc-raw-td><sc-raw-td style="padding: 12px; word-break: break-all">canary-echo · result.tools[name="create_note"].description · output_directive</sc-raw-td><sc-raw-td style="padding: 12px 16px">— → stable</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 12px 16px"><span style="padding: 1px 8px; border-radius: 4px; background: #DCE6F9; color: #1E3A8A; font-size: 12px">statement_added</span></sc-raw-td><sc-raw-td style="padding: 12px; word-break: break-all">canary-echo · result.tools[name="search_notes"].description · model_addressed</sc-raw-td><sc-raw-td style="padding: 12px 16px">— → stable</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 12px 16px"><span style="padding: 1px 8px; border-radius: 4px; background: #F8E1CC; color: #7A3300; font-size: 12px">statement_removed</span></sc-raw-td><sc-raw-td style="padding: 12px; word-break: break-all">title-pin · result.tools[name="get_weather"].title · imperative</sc-raw-td><sc-raw-td style="padding: 12px 16px">stable → —</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="rm-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 16px 20px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="rm-h" style="margin: 0; font-size: 18px; font-weight: 600">Rate moved</h2>
+<span style="font-size: 13px; color: #555C64">Fisher’s exact test, two-sided · Benjamini–Hochberg over the whole comparison, q = 0.05, m = 4</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1080px; border-collapse: collapse; font-size: 14px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Entry · locator · signal</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Before</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">After</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600; width: 260px">Worst-case intervals</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600; text-align: right">p</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600; text-align: right">BH-adjusted</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Flag</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody>
+<sc-for list="{{moves}}" as="m" hint-placeholder-count="3">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 14px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; max-width: 360px; word-break: break-all"><div style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14px">{{m.entry}}</div><div style="color: #3F454B; margin-top: 2px">{{m.locator}}</div><div style="font-weight: 600; margin-top: 2px">{{m.signal}}</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{m.before}}<div style="color: #555C64; font-size: 12px; margin-top: 2px">{{m.beforeCls}}</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{m.after}}<div style="color: #555C64; font-size: 12px; margin-top: 2px">{{m.afterCls}}</div></sc-raw-td>
+<sc-raw-td style="padding: 16px 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="position: relative; height: 10px; background: #EEF0F2; border-radius: 3px"><div style="position: absolute; top: 2px; height: 6px; border-radius: 2px; background: #8C939B; left: {{m.b0}}%; width: {{m.bw}}%"></div></div>
+<div style="position: relative; height: 10px; background: #EEF0F2; border-radius: 3px"><div style="position: absolute; top: 2px; height: 6px; border-radius: 2px; background: #2952A3; left: {{m.a0}}%; width: {{m.aw}}%"></div></div>
+<div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #555C64"><span>0 %</span><span>grey f-0041 · blue f-0042</span><span>100 %</span></div>
+</div>
+</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{m.p}}</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{m.adj}}</sc-raw-td>
+<sc-raw-td style="padding: 14px 20px"><span style="display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; background: {{m.flagBg}}; color: {{m.flagFg}}">{{m.flag}}</span></sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+<div style="padding: 14px 20px; border-top: 1px solid #E7EAEE; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<span style="font-size: 13px; color: #3F454B">notes-legacy: 1 identity undecided in both fleets, none moved.</span>
+<button type="button" sc-camel-on-click="{{ toggleVerbose }}" aria-expanded="{{ verboseOpen }}" style="min-height: 40px; padding: 0 14px; border-radius: 6px; border: 1px solid #C3C8CE; background: #FFFFFF; font: inherit; font-size: 13px; cursor: pointer; color: #14171A">{{verboseLabel}}</button>
+</div>
+<sc-if value="{{verbose}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 0 20px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #3F454B">notes-legacy · result.tools[name="search_notes"].description · model_addressed — 2/52 [0.5 %, 12.9 %] → 3/99 [1.0 %, 11.2 %] · p = 1.00 · undecided → undecided</div>
+</sc-if>
+</section>
+
+<section aria-labelledby="ax-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 16px 20px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="ax-h" style="margin: 0; font-size: 18px; font-weight: 600">What moved, key by key</h2>
+<span style="font-size: 13px; color: #555C64">A change is put down to an axis only when exactly one moved.</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1080px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Entry × scenario</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Server</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Tool</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Scenario</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Environment</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Reading</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-for list="{{axes}}" as="a" hint-placeholder-count="8">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 12px 20px; font-weight: 600">{{a.key}}</sc-raw-td>
+<sc-raw-td style="padding: 12px; color: {{a.serverFg}}">{{a.server}}</sc-raw-td>
+<sc-raw-td style="padding: 12px; color: #555C64">{{a.tool}}</sc-raw-td>
+<sc-raw-td style="padding: 12px; color: {{a.scenarioFg}}">{{a.scenario}}</sc-raw-td>
+<sc-raw-td style="padding: 12px; color: {{a.envFg}}">{{a.env}}</sc-raw-td>
+<sc-raw-td style="padding: 12px 20px; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #14171A">{{a.reading}}</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1600}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { verbose: false };
+  }
+  renderVals() {
+    const flagged = ['#DCE6F9', '#1E3A8A'], quiet = ['#ECEEF0', '#3F454B'];
+    const moves = [
+      { entry: 'clock-server × all-signals', locator: 'result.tools[name="now"].description', signal: 'base64_block', before: '14/48 · 29.2 %', beforeCls: 'flaky', after: '3/62 · 4.8 %', afterCls: 'flaky', b0: 18, bw: 25, a0: 1.7, aw: 12, p: '0.0008', adj: '0.0032', flag: 'rate moved', f: flagged },
+      { entry: 'clock-server × all-signals', locator: 'result.tools[name="now"].description', signal: 'invisible_characters', before: '24/48 · 50.0 %', beforeCls: 'flaky', after: '13/62 · 21.0 %', afterCls: 'flaky', b0: 36, bw: 28, a0: 12.7, aw: 19.6, p: '0.0021', adj: '0.0042', flag: 'rate moved', f: flagged },
+      { entry: 'notes-legacy × all-signals', locator: 'result.tools[name="search_notes"].description', signal: 'output_directive', before: '19/48 · 39.6 %', beforeCls: 'flaky', after: '31/99 · 31.3 %', afterCls: 'flaky', b0: 27, bw: 27, a0: 23, aw: 19, p: '0.36', adj: '0.48', flag: 'not flagged', f: quiet }
+    ].map((m) => ({ ...m, flagBg: m.f[0], flagFg: m.f[1] }));
+    const moved = '#7A3300', same = '#555C64';
+    const axes = [
+      { key: 'reference-server × all-signals', server: '—', tool: '—', scenario: '—', env: '—', reading: 'nothing moved, nothing differs' },
+      { key: 'poison-server × all-signals', server: '—', tool: '—', scenario: '—', env: '—', reading: 'nothing moved, nothing differs — 4 stable, as pinned' },
+      { key: 'clock-server × all-signals', server: '—', tool: '—', scenario: '—', env: '—', reading: 'two rates moved and no axis moved: cannot be attributed — the server’s own behaviour varies; 1 gone carries cap_hint' },
+      { key: 'weather-http × all-signals', server: 'content moved', tool: '—', scenario: '—', env: '—', reading: '1 new, 1 gone → server' },
+      { key: 'notes-legacy × all-signals', server: '—', tool: '—', scenario: '—', env: '—', reading: 'nothing moved; one identity undecided on both sides' },
+      { key: 'notes-legacy × tool-poisoning', server: '—', tool: '—', scenario: 'digest moved', env: 'target image rebuilt', reading: 'two axes moved: cannot be attributed — scenario_drift caveat on new and gone, environment_moved caveat' },
+      { key: 'docs-search × all-signals', server: '—', tool: '—', scenario: '—', env: 'remote · not observed', reading: 'not comparable: f-0042 series incomplete (3 × step_unanswered, rate_limited) — exit 3' },
+      { key: 'shell-tools × all-signals', server: '—', tool: '—', scenario: '—', env: '—', reading: 'refused on both sides — needs gVisor (runsc)' }
+    ].map((a) => ({ ...a, serverFg: a.server === '—' ? same : moved, envFg: a.env === '—' ? same : moved, scenarioFg: a.scenario === '—' ? same : moved }));
+    const v = this.state.verbose;
+    return {
+      moves, axes, verbose: v, verboseOpen: v ? 'true' : 'false',
+      verboseLabel: v ? 'Hide undecided identities' : 'Show undecided identities (--verbose)',
+      toggleVerbose: () => this.setState({ verbose: !v })
+    };
+  }
+}
+</script>
+
+
+</body></html>

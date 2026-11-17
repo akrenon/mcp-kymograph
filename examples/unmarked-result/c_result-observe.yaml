@@ -1,0 +1,11 @@
+# Observation only: no rules. Asks for instruction-capable signals in the text a tool call
+# returns (the result, not the description).
+version: 1
+name: c-result-observe
+
+observations:
+  - name: call-result-carries-instruction
+    description: A tool result carries text that addresses the model and tells it what to do.
+    match: {method: tools/call}
+    path: result.content[*].text
+    signals: [hidden_comment, model_addressed, instruction_override, concealment_directive]

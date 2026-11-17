@@ -1,0 +1,87 @@
+[project]
+name = "mcp-kymograph"
+version = "0.2.0a1"
+description = "Dynamic security testing for MCP servers: records the exchange with a server and reports named signals."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Arno Sontheim" }]
+keywords = ["mcp", "model-context-protocol", "security", "security-testing", "dynamic-analysis", "proxy"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Environment :: Console",
+    "Topic :: Security",
+]
+
+# No runtime dependencies. The stdio transport is newline-delimited JSON-RPC; recording and
+# forwarding it needs asyncio, json and argparse from the standard library. Every dependency
+# added here is code that runs inside a security tool, so each one gets discussed first.
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/akrenon/mcp-kymograph"
+Issues = "https://github.com/akrenon/mcp-kymograph/issues"
+Changelog = "https://github.com/akrenon/mcp-kymograph/blob/main/CHANGELOG.md"
+
+[project.scripts]
+kymograph = "mcp_kymograph.cli:main"
+mcp-kymograph = "mcp_kymograph.cli:main"
+
+# The one optional dependency: reading scenario files written in YAML. The core reads JSON
+# scenarios with the standard library and runs without it. Loaded through a SafeLoader narrowed
+# to JSON's data model (src/mcp_kymograph/scenario.py), never through yaml.load's default.
+[project.optional-dependencies]
+yaml = [
+    "pyyaml==6.0.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+    "pyyaml==6.0.3",
+    "ruff==0.17.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_kymograph"]
+# The web interface's data contract is a document for people changing the code, not something
+# the installed tool reads.
+exclude = ["src/mcp_kymograph/web/CONTRACT.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "docker: needs Docker and the sandbox images; skipped, and counted, without them — an error with MCP_KYMOGRAPH_REQUIRE_DOCKER=1 (tests/conftest.py)",
+    "real_server: needs the Docker daemon and the images of tests/real_servers (python3 tests/real_servers/build.py), not the sandbox images; skipped, and counted in a line of its own, without them — an error with MCP_KYMOGRAPH_REQUIRE_DOCKER=1 (tests/conftest.py)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W",   # pycodestyle
+    "F",        # pyflakes
+    "I",        # import sorting
+    "UP",       # pyupgrade
+    "B",        # bugbear
+    "S",        # flake8-bandit: the rule set that notices eval, subprocess, weak hashes
+    "C4",       # comprehensions
+    "RET",      # return simplification
+    "SIM",      # simplification
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # assert is the point of a test

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — corpus</title>
+<script src="f8a75afa-7602-4fa0-b050-4e49243f6859"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>tool 0.2.0 · source sha256:5e0b…a4d1</span>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 24px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Corpus manifest</div>
+<h1 style="margin: 0; font-size: 32px; font-weight: 600; font-family: 'IBM Plex Mono', monospace">corpus.yaml</h1>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap">$ kymograph corpus check corpus.yaml</div>
+</div>
+<div role="group" aria-label="Manifest state" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+<button type="button" sc-camel-on-click="{{ m.pick }}" aria-pressed="{{ m.pressed }}" style="min-height: 44px; padding: 0 16px; border-radius: 22px; font: inherit; font-size: 14px; cursor: pointer; border: 1px solid {{m.border}}; background: {{m.bg}}; color: {{m.fg}}">{{m.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<sc-if value="{{valid}}" hint-placeholder-val="{{ true }}">
+<section style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; background: #DCEFE4; border: 1px solid #A8D3B9; border-radius: 8px; padding: 14px 18px; color: #0F3D26">
+<strong style="font-size: 15px">Read whole · 7 entries · 2 scenarios load</strong>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px">manifest sha256:0f3e…92aa</span>
+<span style="font-size: 14px">Every entry is pinned. Where each may run is decided by its provenance, before anything starts.</span>
+</section>
+</sc-if>
+<sc-if value="{{refused}}" hint-placeholder-val="{{ false }}">
+<section style="background: #F6D9D9; border: 1px solid #E3A6A6; border-radius: 8px; padding: 16px 18px; color: #5E1212; display: flex; flex-direction: column; gap: 10px">
+<strong style="font-size: 15px">Refused whole — nothing starts · exit 2</strong>
+<ul style="margin: 0; padding-left: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.7">
+<li>entries[6].source.revision: "example/shell-tools@main" names a branch — a full 40-character commit id is required</li>
+<li>entries[7].launch.transport: "http+sse" is not supported (stdio, streamable-http)</li>
+<li>entries[2].scenarios[0]: ../scenarios/clock.yaml does not load — line 9: unknown key "postion"</li>
+</ul>
+<span style="font-size: 13px">A manifest is never read in part: one bad entry refuses all of them.</span>
+</section>
+</sc-if>
+
+<section aria-labelledby="ent-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 16px 20px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="ent-h" style="margin: 0; font-size: 18px; font-weight: 600">Entries and what they pin</h2>
+<span style="font-size: 13px; color: #555C64">server_version is the server’s own content, never the version it announces</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1200px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">Entry</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Source</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">server_version</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Launch</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 12px; font-weight: 600">Scenarios</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 10px 20px; font-weight: 600">May run under</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody>
+<sc-for list="{{entries}}" as="e" hint-placeholder-count="7">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 14px 20px"><div style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px">{{e.name}}</div><div style="margin-top: 4px"><span style="display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 12px; background: {{e.provBg}}; color: {{e.provFg}}">{{e.prov}}</span></div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; color: #3F454B; max-width: 260px; word-break: break-all">{{e.source}}</sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace">{{e.version}}<div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; color: #555C64; margin-top: 2px">{{e.versionNote}}</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace; color: #3F454B; max-width: 280px; word-break: break-all"><div style="color: #14171A">{{e.transport}}</div><div style="margin-top: 2px">{{e.launch}}</div></sc-raw-td>
+<sc-raw-td style="padding: 14px 12px; font-family: 'IBM Plex Mono', monospace">{{e.scenarios}}</sc-raw-td>
+<sc-raw-td style="padding: 14px 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 4px">
+<sc-for list="{{e.iso}}" as="i" hint-placeholder-count="4">
+<span style="display: inline-block; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; background: {{i.bg}}; color: {{i.fg}}; text-decoration: {{i.strike}}">{{i.mark}} {{i.name}}</span>
+</sc-for>
+</div>
+<div style="font-size: 12px; color: #555C64; margin-top: 6px; max-width: 240px">{{e.isoNote}}</div>
+</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 20px">
+<div style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Provenance decides isolation</h2>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 480px; border-collapse: collapse; font-size: 13px; text-align: center">
+<sc-raw-thead><sc-raw-tr style="color: #555C64; font-size: 12px"><sc-raw-th scope="col" style="padding: 8px; text-align: left; font-weight: 600">provenance</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">host</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">runc</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">runsc (gVisor)</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">remote</sc-raw-th></sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 10px 8px; text-align: left">reference</sc-raw-th><sc-raw-td style="padding: 10px 8px; color: #0F5132">✓</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #0F5132">✓</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #555C64">—</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #8E1B1B">✕</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 10px 8px; text-align: left">poison</sc-raw-th><sc-raw-td style="padding: 10px 8px; color: #0F5132">✓</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #0F5132">✓</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #555C64">—</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #8E1B1B">✕</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 10px 8px; text-align: left">real-world</sc-raw-th><sc-raw-td style="padding: 10px 8px; color: #8E1B1B">✕</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #8E1B1B">✕</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #7A3300">only here · not provided yet</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #7A3300">endpoint only · engagement</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">Refused, never downgraded. runc shares the host’s kernel: it keeps a server off the network, not off the kernel — which is why a real-world entry runs only under gVisor. A remote endpoint is not run here at all; its egress is not observed.</p>
+</div>
+
+<div style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Reproduction triple — notes-legacy</h2>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; background: #F5F6F7; border-radius: 6px; padding: 12px; white-space: pre-wrap; word-break: break-all">"reproduction": {
+  "entry":    {"name": "notes-legacy", "server_version": "sha256:e0c41f…9a12",
+               "launch": "sha256:6b20…d3f9", "transport": "streamable-http"},
+  "tool":     {"version": "0.2.0", "source": "sha256:5e0b…a4d1"},
+  "scenario": {"name": "all-signals", "digest": "sha256:77b0d3…41ee"},
+  "environment": {"isolation": "runc",
+               "sandbox_image": "sha256:4b1e9c…07ad",
+               "target_image": "sha256:91fd2e…c3b0"}}</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 13px; color: #3F454B; line-height: 1.6">
+<li>server_version: digest over sorted (relative path, file hash) pairs of exactly the files named — <code style="font-family: 'IBM Plex Mono', monospace">.git</code>, <code style="font-family: 'IBM Plex Mono', monospace">__pycache__</code> and compiled files left out, symbolic links refused</li>
+<li>The same bytes under another layout are another server; a change to Kymograph never moves it</li>
+<li>The tool’s source digest moves between commits even when a development version does not</li>
+</ul>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1500}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'valid' };
+  }
+  renderVals() {
+    const ok = (name) => ({ name, mark: '✓', bg: '#DCEFE4', fg: '#0F5132', strike: 'none' });
+    const no = (name) => ({ name, mark: '✕', bg: '#ECEEF0', fg: '#555C64', strike: 'line-through' });
+    const need = (name) => ({ name, mark: '!', bg: '#F8E1CC', fg: '#7A3300', strike: 'none' });
+    const prov = { reference: ['#DCE6F9', '#1E3A8A'], poison: ['#E6DDF5', '#4B2A85'], 'real-world': ['#F8E1CC', '#7A3300'] };
+    const entries = [
+      { name: 'reference-server', prov: 'reference', source: 'paths: reference_server.py, ../discovery_server.py', version: 'sha256:2a91…f03c', versionNote: '2 files', transport: 'stdio', launch: '{python} {dir}/reference_server.py', scenarios: 'all-signals', iso: [ok('host'), ok('runc')], isoNote: '' },
+      { name: 'poison-server', prov: 'poison', source: 'paths: poison_server.py, ../discovery_server.py', version: 'sha256:c7d0…18ab', versionNote: '2 files · pinned output: 4 findings', transport: 'stdio', launch: '{python} {dir}/poison_server.py', scenarios: 'all-signals', iso: [ok('host'), ok('runc')], isoNote: '' },
+      { name: 'clock-server', prov: 'reference', source: 'paths: clock_server.py', version: 'sha256:83e5…0c27', versionNote: '1 file', transport: 'stdio', launch: '{python} {dir}/clock_server.py', scenarios: 'all-signals', iso: [ok('host'), ok('runc')], isoNote: '' },
+      { name: 'weather-http', prov: 'reference', source: 'paths: weather_http/', version: 'sha256:9e52…0a1d', versionNote: '6 files, directory walked', transport: 'streamable-http', launch: 'listen 127.0.0.1:8930 · path /mcp', scenarios: 'all-signals', iso: [ok('host'), ok('runc')], isoNote: 'under runc: reached through the ingress bridge’s socket file' },
+      { name: 'notes-legacy', prov: 'poison', source: 'paths: notes_legacy/', version: 'sha256:e0c41f…9a12', versionNote: '4 files', transport: 'streamable-http', launch: 'listen 127.0.0.1:8931 · path /mcp', scenarios: 'all-signals, tool-poisoning', iso: [ok('host'), ok('runc')], isoNote: '' },
+      { name: 'docs-search', prov: 'real-world', source: 'endpoint: https://mcp.docs-search.example.com/mcp', version: 'endpoint', versionNote: 'identity kind endpoint — content not known', transport: 'streamable-http', launch: 'remote · TLS, system trust store', scenarios: 'all-signals', iso: [no('host'), no('runc'), need('remote')], isoNote: 'needs --engagement-confirmed; one run per origin, 10 s apart' },
+      { name: 'shell-tools', prov: 'real-world', source: 'revision: example/shell-tools@3f1c9a0e…d27b', version: 'sha256:—', versionNote: 'nothing delivers a revision’s code yet', transport: 'stdio', launch: 'shell-tools --stdio', scenarios: 'all-signals', iso: [no('host'), no('runc'), no('runsc')], isoNote: 'refused under every isolation in this version' }
+    ].map((e) => ({ ...e, provBg: prov[e.prov][0], provFg: prov[e.prov][1] }));
+    const m = this.state.mode;
+    const modes = [['valid', 'Valid manifest'], ['refused', 'Refused manifest']].map(([id, label]) => {
+      const on = m === id;
+      return { label, pressed: on ? 'true' : 'false', bg: on ? '#14171A' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14171A', border: on ? '#14171A' : '#C3C8CE', pick: () => this.setState({ mode: id }) };
+    });
+    return { entries, modes, valid: m === 'valid', refused: m === 'refused' };
+  }
+}
+</script>
+
+
+</body></html>

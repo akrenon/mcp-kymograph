@@ -1,0 +1,10 @@
+# Driver script: handshake, tool listing, one call of the server's read_file.
+version: 1
+name: c-read-file
+steps:
+  - initialize
+  - list: tools/list
+  - call:
+      tool: read_file
+      arguments: {}
+      check: result.content[*].text

@@ -1,0 +1,24 @@
+# The project's own corpus: the reference/poison pair, with their expected output pinned in
+# expected.json. Both are in-repo entries, pinned by the content of their own files — not by
+# the commit of this repository, which every change to Kymograph would move.
+version: 1
+description: The reference/poison pair, the pipeline's invariant.
+
+entries:
+  - name: reference-server
+    provenance: reference
+    source:
+      paths: [reference_server.py, ../discovery_server.py]
+    launch:
+      transport: stdio
+      command: ["{python}", "{dir}/reference_server.py"]
+    scenarios: [../scenarios/all-signals.yaml]
+
+  - name: poison-server
+    provenance: poison
+    source:
+      paths: [poison_server.py, ../discovery_server.py]
+    launch:
+      transport: stdio
+      command: ["{python}", "{dir}/poison_server.py"]
+    scenarios: [../scenarios/all-signals.yaml]

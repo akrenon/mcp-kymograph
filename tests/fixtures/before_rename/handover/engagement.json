@@ -1,0 +1,41 @@
+{
+  "abort_criteria": [
+    "the customer asks to stop"
+  ],
+  "actions": {
+    "call": true,
+    "list": true
+  },
+  "canaries": [
+    {
+      "id": "page-1",
+      "kind": "file",
+      "path": "/srv/canary/today.txt",
+      "removed": null,
+      "where": "notes/today.txt"
+    },
+    {
+      "id": "row-7",
+      "kind": "tool_text",
+      "removed": null,
+      "where": "orders, row 7"
+    }
+  ],
+  "end_customer": {
+    "name": "End Customer GmbH"
+  },
+  "id": "acme-2026-11",
+  "retention": {
+    "delete_after": "2026-12-31"
+  },
+  "targets": [
+    {
+      "host": "127.0.0.1"
+    }
+  ],
+  "version": 2,
+  "window": {
+    "from": "2026-11-16T00:00:00Z",
+    "until": "2026-11-19T00:00:00Z"
+  }
+}

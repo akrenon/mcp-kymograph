@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "id": "acme-2026-11",
+  "end_customer": {"name": "End Customer GmbH"},
+  "window": {"from": "2026-11-16T00:00:00Z", "until": "2026-11-19T00:00:00Z"},
+  "targets": [{"host": "127.0.0.1"}],
+  "actions": {"list": true, "call": true},
+  "abort_criteria": ["the customer asks to stop"],
+  "emergency": {"name": "Ops", "reach": "on call"},
+  "salt_env": "POLYGRAPH_SALT",
+  "known_values": [],
+  "retention": {"delete_after": "2026-12-31"},
+  "canaries": [
+    {"id": "page-1", "kind": "file", "where": "notes/today.txt", "path": "/srv/canary/today.txt", "removed": null},
+    {"id": "row-7", "kind": "tool_text", "where": "orders, row 7", "removed": null}
+  ]
+}

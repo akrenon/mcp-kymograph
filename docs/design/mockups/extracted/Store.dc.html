@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — finding store</title>
+<script src="9b759f47-8549-4891-ac28-3e8dd22456a9"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>findings.sqlite · schema 9</span>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 22px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1 1 560px">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Finding store</div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 600">Each finding under its key, each run in its state</h1>
+<p style="margin: 0; font-size: 14px; color: #3F454B; line-height: 1.5; max-width: 780px">Corpus runs only. Where a finding sat in a run is a sighting beside it, never part of its key. A store or recording of another schema is refused whole — never migrated, never read in part.</p>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap; max-width: 100%">{{command}}</div>
+</section>
+
+<div role="tablist" aria-label="Store views" style="display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid #DADDE1">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" role="tab" sc-camel-on-click="{{ t.pick }}" aria-selected="{{ t.selected }}" style="min-height: 44px; padding: 0 16px; border: 0; border-bottom: 3px solid {{t.line}}; background: none; font: inherit; font-size: 14px; font-weight: {{t.weight}}; cursor: pointer; color: #14171A">{{t.label}}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{showRuns}}" hint-placeholder-val="{{ true }}">
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1100px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">Run · sha256 of recording</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Entry × scenario</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Provenance</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Isolation</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">State</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Causes</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">Rules</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody>
+<sc-for list="{{runs}}" as="r" hint-placeholder-count="7">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE">
+<sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Mono', monospace">{{r.id}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.key}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px">{{r.prov}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace">{{r.iso}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px"><span style="padding: 2px 8px; border-radius: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; background: {{r.bg}}; color: {{r.fg}}">{{r.state}}</span></sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; font-family: 'IBM Plex Mono', monospace; color: #3F454B">{{r.causes}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Mono', monospace; color: {{r.rulesFg}}">{{r.rules}}</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-size: 13px; color: #3F454B">Runs judged under rules v3 and v4 sit side by side; a comparison across them says that their states may differ by the rules alone.</div>
+</section>
+</sc-if>
+
+<sc-if value="{{showFindings}}" hint-placeholder-val="{{ false }}">
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1180px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">server · server_version</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">scenario · statement</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">locator</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">signal</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600; text-align: right">sightings</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">tool_version</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-for list="{{findings}}" as="f" hint-placeholder-count="6">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 10px 18px"><strong>{{f.server}}</strong><div style="color: #555C64; margin-top: 2px">{{f.version}}</div></sc-raw-td>
+<sc-raw-td style="padding: 10px 8px">{{f.scenario}}<div style="color: #555C64; margin-top: 2px">{{f.statement}}</div></sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; word-break: break-all; max-width: 380px">{{f.locator}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; font-weight: 600">{{f.signal}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; text-align: right">{{f.sightings}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 18px; color: #555C64">0.2.0</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-size: 13px; color: #3F454B">A finding says “signal X fired at place Y”. It carries no severity and no verdict.</div>
+</section>
+</sc-if>
+
+<sc-if value="{{showReal}}" hint-placeholder-val="{{ false }}">
+<section style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #F8E1CC; border: 1px solid #E7B98F; border-radius: 8px; padding: 14px 18px; color: #4A1F00; font-size: 14px; line-height: 1.5"><strong>Candidates for responsible disclosure — never confirmed weaknesses.</strong> A real-world entry’s findings are counted in fleet output but listed only here, queried apart from what may be published.</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1000px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">server</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">locator · signal</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">class in last fleet</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">isolation</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">disclosure</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-weight: 600">docs-search</sc-raw-td>
+<sc-raw-td style="padding: 12px 8px; font-family: 'IBM Plex Mono', monospace">result.tools[name="search"].description<div style="font-weight: 600; margin-top: 2px">output_directive</div></sc-raw-td>
+<sc-raw-td style="padding: 12px 8px; font-family: 'IBM Plex Mono', monospace">stable · 97/97<div style="font-family: 'IBM Plex Sans', sans-serif; color: #7A3300; margin-top: 2px">series incomplete (3 unknown)</div></sc-raw-td>
+<sc-raw-td style="padding: 12px 8px; font-family: 'IBM Plex Mono', monospace">remote<div style="font-family: 'IBM Plex Sans', sans-serif; color: #7A3300; margin-top: 2px">egress not observed</div></sc-raw-td>
+<sc-raw-td style="padding: 12px 18px">[YOUR DISCLOSURE STATUS]</sc-raw-td>
+</sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE">
+<sc-raw-td style="padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-weight: 600">shell-tools</sc-raw-td>
+<sc-raw-td colspan="4" style="padding: 12px 8px; color: #3F454B">no findings — refused in every fleet (needs gVisor), recorded as its result</sc-raw-td>
+</sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{showFleets}}" hint-placeholder-val="{{ false }}">
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1000px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">Fleet</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Started</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600; text-align: right">Keys</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Repeat</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">State</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Rules</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 8px; font-weight: 600">Comparison digest</sc-raw-th><sc-raw-th scope="col" style="padding: 10px 18px; font-weight: 600">Interrupted</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-for list="{{fleets}}" as="f" hint-placeholder-count="4">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE">
+<sc-raw-td style="padding: 10px 18px; font-weight: 600"><a href="Main.dc.html" style="text-decoration: none">{{f.id}}</a></sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; color: #3F454B">{{f.started}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; text-align: right">{{f.keys}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; color: #3F454B">{{f.repeat}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px"><span style="padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; background: {{f.bg}}; color: {{f.fg}}">{{f.state}}</span></sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; color: {{f.rulesFg}}">{{f.rules}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 8px; color: #3F454B">{{f.digest}}</sc-raw-td>
+<sc-raw-td style="padding: 10px 18px; color: #7A3300">{{f.interrupted}}</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-size: 13px; color: #3F454B; line-height: 1.5">The digest is taken over results sorted by entry and scenario, without times, run ids or parallelism: two fleets over the same corpus in different orders have the same digest. An interrupted fleet has none — its results are not all there. <code style="font-family: 'IBM Plex Mono', monospace">fleet diff</code> compares the last two by default.</div>
+</section>
+</sc-if>
+
+<sc-if value="{{showDiff}}" hint-placeholder-val="{{ false }}">
+<section style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Two runs of weather-http × all-signals</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div style="background: #DCE6F9; border-radius: 6px; padding: 12px"><div style="font-size: 12px; color: #1E3A8A">new</div><div style="font-size: 24px; font-weight: 600; color: #1E3A8A">1</div></div>
+<div style="background: #F8E1CC; border-radius: 6px; padding: 12px"><div style="font-size: 12px; color: #7A3300">gone</div><div style="font-size: 24px; font-weight: 600; color: #7A3300">1</div></div>
+<div style="background: #ECEEF0; border-radius: 6px; padding: 12px"><div style="font-size: 12px; color: #3F454B">unchanged</div><div style="font-size: 24px; font-weight: 600; color: #3F454B">1</div></div>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', monospace; font-size: 13px; display: flex; flex-direction: column; gap: 8px">
+<li>new · result.tools[name="get_forecast"].description · hidden_comment</li>
+<li>gone · result.tools[name="get_alerts"].description · output_directive</li>
+<li>unchanged · result.tools[name="get_weather"].description · model_addressed <span style="font-family: 'IBM Plex Sans', sans-serif; color: #555C64">— moved from tools[0] to tools[1], same key</span></li>
+</ul>
+<div style="font-size: 13px; color: #3F454B">basis: single run — one run’s word on each side, no interval.</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Axes</h2>
+<sc-raw-table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 8px 0; text-align: left; font-weight: 600">server</sc-raw-th><sc-raw-td style="padding: 8px; color: #7A3300">content moved</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 8px 0; text-align: left; font-weight: 600">tool</sc-raw-th><sc-raw-td style="padding: 8px; color: #555C64">—</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 8px 0; text-align: left; font-weight: 600">scenario</sc-raw-th><sc-raw-td style="padding: 8px; color: #555C64">—</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-th scope="row" style="padding: 8px 0; text-align: left; font-weight: 600">environment</sc-raw-th><sc-raw-td style="padding: 8px; color: #555C64">—</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+<div style="font-size: 13px; color: #14171A">Exactly one axis moved: new and gone are put down to the <strong>server</strong>.</div>
+<div style="font-size: 12px; color: #555C64; line-height: 1.5">Had either run been incomplete, diff would exit 3: what it calls gone may only be missing. A scenario drift keeps its exit code and marks statement_added / statement_removed.</div>
+</div>
+</section>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1400}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'fleets' };
+  }
+  renderVals() {
+    const S = { complete: ['#DCEFE4', '#0F5132'], incomplete: ['#F8E1CC', '#7A3300'], sandbox_failed: ['#E6DDF5', '#4B2A85'], server_failed: ['#F6D9D9', '#8E1B1B'] };
+    const runs = [
+      { id: '7f3c…a201', key: 'notes-legacy × all-signals', prov: 'poison', iso: 'runc', state: 'complete', causes: '—', rules: 'v4' },
+      { id: '2be0…91c4', key: 'poison-server × all-signals', prov: 'poison', iso: 'runc', state: 'complete', causes: '—', rules: 'v4' },
+      { id: 'a91d…0e7f', key: 'docs-search × all-signals', prov: 'real-world', iso: 'remote', state: 'incomplete', causes: 'step_unanswered', rules: 'v4' },
+      { id: 'c04e…5d38', key: 'notes-legacy × tool-poisoning', prov: 'poison', iso: 'runc', state: 'complete', causes: '—', rules: 'v4' },
+      { id: '5512…b6a0', key: 'clock-server × all-signals', prov: 'reference', iso: 'runc', state: 'incomplete', causes: 'interrupted', rules: 'v4' },
+      { id: 'e7a0…13fd', key: 'weather-http × all-signals', prov: 'reference', iso: 'runc', state: 'sandbox_failed', causes: 'images_mismatch', rules: 'v4' },
+      { id: '0d2f…77e9', key: 'reference-server × all-signals', prov: 'reference', iso: 'host', state: 'complete', causes: '—', rules: 'v3' }
+    ].map((r) => ({ ...r, bg: S[r.state][0], fg: S[r.state][1], rulesFg: r.rules === 'v4' ? '#555C64' : '#7A3300' }));
+    const findings = [
+      { server: 'poison-server', version: 'sha256:c7d0…18ab', scenario: 'all-signals', statement: 'tool-metadata', locator: 'result.tools[name="get_weather"].description', signal: 'hidden_comment', sightings: '97' },
+      { server: 'poison-server', version: 'sha256:c7d0…18ab', scenario: 'all-signals', statement: 'tool-metadata', locator: 'result.tools[name="lookup_city"].description', signal: 'instruction_override', sightings: '97' },
+      { server: 'poison-server', version: 'sha256:c7d0…18ab', scenario: 'all-signals', statement: 'tool-metadata', locator: 'result.tools[name="send_report"].description', signal: 'concealment_directive', sightings: '97' },
+      { server: 'poison-server', version: 'sha256:c7d0…18ab', scenario: 'all-signals', statement: 'names', locator: 'result.tools[name="get-weather"].name', signal: 'tool_name_collision', sightings: '97' },
+      { server: 'notes-legacy', version: 'sha256:e0c41f…9a12', scenario: 'all-signals', statement: 'tool-metadata', locator: 'result.tools[name="search_notes"].description', signal: 'output_directive', sightings: '50' },
+      { server: 'weather-http', version: 'sha256:9e52…0a1d', scenario: 'all-signals', statement: 'tool-metadata', locator: 'result.tools[name="get_forecast"].description', signal: 'hidden_comment', sightings: '48' }
+    ];
+    const FS = { complete: ['#DCEFE4', '#0F5132'], incomplete: ['#F8E1CC', '#7A3300'] };
+    const fleets = [
+      { id: 'f-0043', started: '2026-10-27 08:41 UTC', keys: 8, repeat: 'on', state: 'incomplete', rules: 'v4', digest: '— (not all results there)', interrupted: 'SIGINT' },
+      { id: 'f-0042', started: '2026-10-08 09:14 UTC', keys: 8, repeat: 'on', state: 'incomplete', rules: 'v4', digest: 'cmp 3f9a…c210 · full 81d2…07fb', interrupted: '' },
+      { id: 'f-0041', started: '2026-10-01 09:02 UTC', keys: 8, repeat: 'on', state: 'complete', rules: 'v4', digest: 'cmp e71c…88d0 · full 40ab…c9e2', interrupted: '' },
+      { id: 'f-0040', started: '2026-09-24 09:10 UTC', keys: 7, repeat: 'off · single run', state: 'complete', rules: 'v3', digest: 'b02e…1a4f (one digest, with causes)', interrupted: '' }
+    ].map((f) => ({ ...f, bg: FS[f.state][0], fg: FS[f.state][1], rulesFg: f.rules === 'v4' ? '#555C64' : '#7A3300' }));
+    const t = this.state.tab;
+    const cmds = {
+      fleets: '$ kymograph fleet runs --store findings.sqlite',
+      runs: '$ kymograph store runs --store findings.sqlite',
+      findings: '$ kymograph store findings --store findings.sqlite --provenance poison',
+      real: '$ kymograph store findings --store findings.sqlite --provenance real-world',
+      diff: '$ kymograph store diff --store findings.sqlite runs/<a> runs/<b>'
+    };
+    const tabs = [['fleets', 'Fleet runs 4'], ['runs', 'Runs 7'], ['findings', 'Findings'], ['real', 'Real-world candidates 1'], ['diff', 'Diff two runs']].map(([id, label]) => {
+      const on = t === id;
+      return { label, selected: on ? 'true' : 'false', line: on ? '#2952A3' : 'transparent', weight: on ? '600' : '400', pick: () => this.setState({ tab: id }) };
+    });
+    return { runs, findings, fleets, tabs, command: cmds[t], showFleets: t === 'fleets', showRuns: t === 'runs', showFindings: t === 'findings', showReal: t === 'real', showDiff: t === 'diff' };
+  }
+}
+</script>
+
+
+</body></html>

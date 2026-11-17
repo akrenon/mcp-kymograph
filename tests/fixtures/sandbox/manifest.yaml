@@ -1,0 +1,23 @@
+# Servers that misbehave on the network, for the sandbox's own tests. Run them under
+# --isolation runc only: on the host they would try to reach the network for real.
+version: 1
+description: Network misbehaviour for the runc sandbox's tests.
+
+entries:
+  - name: phone-home-server
+    provenance: poison
+    source:
+      paths: [phone_home_server.py, ../discovery_server.py]
+    launch:
+      transport: stdio
+      command: ["{python}", "{dir}/phone_home_server.py"]
+    scenarios: [../scenarios/all-signals.yaml]
+
+  - name: chatty-server
+    provenance: poison
+    source:
+      paths: [chatty_server.py, ../discovery_server.py]
+    launch:
+      transport: stdio
+      command: ["{python}", "{dir}/chatty_server.py"]
+    scenarios: [../scenarios/all-signals.yaml]

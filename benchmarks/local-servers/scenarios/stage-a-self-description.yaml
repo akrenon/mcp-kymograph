@@ -1,0 +1,46 @@
+# Stage A, observation only: no rules, so this file changes no traffic. It applies the signals
+# the built-in walk applies to a tool description to the other places a server describes
+# itself: the `instructions` of the initialize answer, and the title and description of every
+# prompt, prompt argument, resource and resource template. The same nine signals at every
+# place, without an exception for any of them. Names, URIs and serverInfo are not checked,
+# just as the walk does not check tool names.
+version: 1
+name: stage-a-self-description
+
+observations:
+  - name: initialize-instructions
+    match: {method: initialize}
+    path: result.instructions
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: prompt-title
+    match: {method: prompts/list}
+    path: result.prompts[*].title
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: prompt-description
+    match: {method: prompts/list}
+    path: result.prompts[*].description
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: prompt-argument-title
+    match: {method: prompts/list}
+    path: result.prompts[*].arguments[*].title
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: prompt-argument-description
+    match: {method: prompts/list}
+    path: result.prompts[*].arguments[*].description
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: resource-title
+    match: {method: resources/list}
+    path: result.resources[*].title
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: resource-description
+    match: {method: resources/list}
+    path: result.resources[*].description
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: resource-template-title
+    match: {method: resources/templates/list}
+    path: result.resourceTemplates[*].title
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: resource-template-description
+    match: {method: resources/templates/list}
+    path: result.resourceTemplates[*].description
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]

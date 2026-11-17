@@ -1,0 +1,22 @@
+# Stage B, observation only: no rules, so this file changes no traffic. It applies to the result of
+# `tools/call` the nine signals the built-in walk applies to a tool description, where the walk
+# itself applies only the six that read everywhere: the three metadata signals (hidden_comment,
+# role_line, whitespace_padding) are added at the two places a statement reaches, the text of a
+# content entry and the text of an embedded resource.
+# `structuredContent` is not reached: its keys are the server's own and the path syntax has no
+# wildcard for a key (only `[*]` for lists), so no statement can name them. There the walk's six
+# signals stay the only check.
+# False-alarm rates of these signals on third-party content are not measured yet; the selection
+# is reviewed once there are measured rates per signal.
+version: 1
+name: stage-b-call-result
+
+observations:
+  - name: call-content-text
+    match: {method: tools/call}
+    path: result.content[*].text
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]
+  - name: call-resource-text
+    match: {method: tools/call}
+    path: result.content[*].resource.text
+    signals: [invisible_characters, chat_template_marker, instruction_override, concealment_directive, output_directive, model_addressed, hidden_comment, role_line, whitespace_padding]

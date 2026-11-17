@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — masking</title>
+<script src="22036637-27e0-44de-a44f-62dd8563b2c8"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>masked when written · never stored in the clear</span>
+</div>
+</div>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #DADDE1">
+<nav aria-label="Run views" style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Inventory.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Driver inventory</a>
+<a href="Proxy.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Proxy session</a>
+<a href="Recording.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">HTTP recording</a>
+<a href="Sandbox.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Sandbox</a>
+<a href="Verdict.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Verdict</a>
+<a href="Masking.dc.html" aria-current="page" style="padding: 14px 12px; font-size: 14px; font-weight: 600; color: #14171A; text-decoration: none; border-bottom: 3px solid #2952A3">Masking</a>
+</nav>
+</div>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 22px">
+
+<section style="display: flex; flex-direction: column; gap: 10px; max-width: 900px">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Recordings contain sensitive data</div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 600">Treat a recording like the traffic it came from</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3F454B">A recording is a verbatim log of everything a client and a server said to each other, customer data included. Credentials are masked at the moment the event is written — never stored in the clear and hidden at display time. The output directory is git-ignored; a fleet refuses an <code style="font-family: 'IBM Plex Mono', monospace">--out-dir</code> git could commit.</p>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 999 1 600px; min-width: 0; background: #14171A; color: #E7EAEE; border-radius: 8px; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 10px 16px; background: #1F2328; color: #AEB4BB; font-family: 'IBM Plex Mono', monospace; font-size: 12px"><span>events.jsonl · message #9 · client_to_server · tools/call sync_notes</span><span>as written</span></div>
+<div style="padding: 14px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; white-space: pre-wrap; word-break: break-all">{"type": "message", "seq": 9, "direction": "client_to_server",
+ "transport": "stdio", "size_bytes": 412,
+ "body": {"jsonrpc": "2.0", "id": 3, "method": "tools/call",
+  "params": {"name": "sync_notes",
+   "arguments": {"api_key": <span style="background: #5E1212; color: #FFE3E3; padding: 0 4px; border-radius: 3px">"***"</span>, "since": "2026-10-01",
+                 "auth": {"token": <span style="background: #5E1212; color: #FFE3E3; padding: 0 4px; border-radius: 3px">"***"</span>, "scheme": "Bearer"}},
+   "_meta": {"progressToken": <span style="background: #1E3A8A; color: #DCE6F9; padding: 0 4px; border-radius: 3px">"***HANDLE-a1b2c3d4e5f6***"</span>}}},
+ "redactions": ["params.arguments.api_key", "params.arguments.auth.token"],
+ "handles": ["params._meta.progressToken"]}
+
+{"type": "message", "seq": 10, "direction": "server_to_client", …
+ "body": {"jsonrpc": "2.0", "method": "notifications/progress",
+  "params": {"progressToken": <span style="background: #1E3A8A; color: #DCE6F9; padding: 0 4px; border-radius: 3px">"***HANDLE-a1b2c3d4e5f6***"</span>, "progress": 1, "total": 3}}}</div>
+</div>
+
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #5E1212"></span><h2 style="margin: 0; font-size: 16px; font-weight: 600">Blanked</h2></div>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">Everything that looks like a credential: keys whose name carries <code style="font-family: 'IBM Plex Mono', monospace">auth</code>, <code style="font-family: 'IBM Plex Mono', monospace">cookie</code>, <code style="font-family: 'IBM Plex Mono', monospace">sessionid</code>, <code style="font-family: 'IBM Plex Mono', monospace">api_key</code>, <code style="font-family: 'IBM Plex Mono', monospace">token</code>…; <code style="font-family: 'IBM Plex Mono', monospace">Bearer …</code> in text; every <code style="font-family: 'IBM Plex Mono', monospace">--mask-key NAME</code> you add. The value is gone; its place in the message is listed in <code style="font-family: 'IBM Plex Mono', monospace">redactions</code>.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #1E3A8A"></span><h2 style="margin: 0; font-size: 16px; font-weight: 600">Handle pseudonym</h2></div>
+<p style="margin: 0; font-size: 13px; color: #3F454B; line-height: 1.5">Two fields exist only to tie messages together: <code style="font-family: 'IBM Plex Mono', monospace">params.progressToken</code> and <code style="font-family: 'IBM Plex Mono', monospace">params._meta.progressToken</code>. They get a stable stand-in from the run’s keyed HMAC: the same value reads the same way throughout one recording and differently in the next. The relation survives, the value does not. Over HTTP, SSE event ids join this set.</p>
+</div>
+<div style="background: #F3ECCF; border: 1px solid #E2D394; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: #3D3000; line-height: 1.5">A session id grants access to the session. It is closer to a bearer token than to a correlation id, so <code style="font-family: 'IBM Plex Mono', monospace">Mcp-Session-Id</code> is blanked, not pseudonymised — the recording keeps only an ordinal (session 1, 2, …).</div>
+</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">run_finished.server_redactions</h2>
+<span style="font-size: 12px; color: #555C64">values the masker took out of server traffic</span>
+</div>
+<sc-raw-table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em"><sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Direction</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Where</sc-raw-th><sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Counted?</sc-raw-th></sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px">client → server</sc-raw-td><sc-raw-td style="padding: 10px 8px">params.arguments.api_key</sc-raw-td><sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Sans', sans-serif; color: #3F454B">no — the client sending its own credential is ordinary</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px">server → client</sc-raw-td><sc-raw-td style="padding: 10px 8px">result.content[0].text (Bearer …)</sc-raw-td><sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Sans', sans-serif; color: #7A3300">yes — a server handing a credential to a model is worth a look</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px">server → client · HTTP</sc-raw-td><sc-raw-td style="padding: 10px 8px">Set-Cookie header</sc-raw-td><sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Sans', sans-serif; color: #7A3300">yes — headers are a map through the same masker</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-family: 'IBM Plex Mono', monospace; font-size: 13px">"server_redactions": 2</div>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Where masking reaches</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>message bodies, both directions</span><span style="font-family: 'IBM Plex Mono', monospace; color: #555C64">mask_json</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>intervention steps — before and after values, in their place</span><span style="font-family: 'IBM Plex Mono', monospace; color: #555C64">same rules</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>the server command in run_started</span><span style="font-family: 'IBM Plex Mono', monospace; color: #555C64">mask_argv</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>HTTP headers and query strings, as maps</span><span style="font-family: 'IBM Plex Mono', monospace; color: #555C64">proposed</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px"><span>WWW-Authenticate — the one header parsed first, so resource_metadata, scope and error stay legible</span><span style="font-family: 'IBM Plex Mono', monospace; color: #555C64">proposed</span></li>
+</ul>
+<p style="margin: 0; font-size: 12px; color: #555C64; line-height: 1.5">A token never goes on argv, where it would reach run_started behind nothing but mask_argv: a file, or the name of an environment variable.</p>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1500}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+
+
+</body></html>

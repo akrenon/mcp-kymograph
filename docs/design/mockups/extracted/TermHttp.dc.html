@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Terminal — drive and listen over HTTP</title>
+<script src="ce031f5d-1c84-463e-8c3d-567949c4f12e"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7EA6F2}a:hover{color:#A9C4F7}
+</style>
+</helmet>
+<div style="width: 1100px; height: 1180px; box-sizing: border-box; background: #E7EAEE; padding: 24px; font-family: 'IBM Plex Mono', monospace">
+<div style="height: 100%; display: flex; flex-direction: column; background: #0F1216; border-radius: 10px; overflow: hidden; border: 1px solid #2B3036">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #1A1E23; border-bottom: 1px solid #2B3036">
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="flex-grow: 1; text-align: center; font-size: 12px; color: #8C939B">~/assessments/notes — zsh</span>
+</div>
+<div style="flex-grow: 1; padding: 18px 20px; font-size: 12.5px; line-height: 1.55; color: #D7DBE0; white-space: pre; overflow: hidden"><span style="color: #8C939B"># 1 · driver over Streamable HTTP, corpus entry in the runc sandbox</span>
+<span style="color: #7CCB9B">$</span> kymograph drive --manifest corpus.yaml --entry notes-legacy --isolation runc --out-dir runs
+kymograph: entry notes-legacy · provenance poison · transport streamable-http · listen 127.0.0.1:8931/mcp
+kymograph: sandbox: sink armed · ruleset loaded · <span style="color: #7CCB9B">ingress bridge listening</span> · probe arrived 14/14 · gate held
+kymograph: target accepting after 0.41 s
+kymograph: era probe: server/discover → 400, empty body → <span style="color: #F0A15E">legacy</span> (2025-11-25)
+  →  request    server/discover                       318 B   <span style="color: #8C939B">x1  POST 400 empty</span>
+  →  request    initialize                            274 B   <span style="color: #8C939B">x2  POST 200 sse</span>
+  ←  result     #0                                    1.2 kB  <span style="color: #8C939B">x2  event h:5c1e…  session 1</span>
+  →  notification notifications/initialized            54 B   <span style="color: #8C939B">x3  POST 202</span>
+  ←  notification notifications/message               188 B   <span style="color: #8C939B">x4  GET stream · closed after event, retry 1500 ms</span>
+  ←  notification notifications/tools/list_changed     71 B   <span style="color: #8C939B">x5  GET resume 1/3 · Last-Event-ID h:91ab…</span>
+  →  request    tools/list                             96 B   <span style="color: #8C939B">x6  POST 200 json</span>
+  ←  result     #1                                    6.8 kB  <span style="color: #8C939B">x6</span>
+  →  request    tools/list                            131 B   <span style="color: #8C939B">x7  POST </span><span style="color: #F0A15E">404</span><span style="color: #8C939B"> — session 1 ended</span>
+kymograph: <span style="color: #F0A15E">session lost (404): one new session, script from the top</span>
+  →  request    initialize                            274 B   <span style="color: #8C939B">x8  POST 200 sse  session 2</span>
+  ←  result     #2                                    1.2 kB
+  →  notification notifications/initialized            54 B   <span style="color: #8C939B">x9  POST 202</span>
+  →  request    tools/list                             96 B   <span style="color: #8C939B">x10 POST 200 json</span>
+  ←  result     #3                                    6.8 kB
+  →  request    tools/list                            131 B   <span style="color: #8C939B">x11 POST 200 json · last page</span>
+  ←  result     #4                                    2.9 kB
+  →  request    resources/list                         98 B   <span style="color: #8C939B">x12 POST 200 json</span>
+  ←  result     #5                                    1.4 kB
+  →  request    resources/templates/list              108 B   <span style="color: #8C939B">x13 POST 200 json</span>
+  ←  result     #6                                    402 B
+kymograph: step skipped: prompts/list (capability_not_offered)
+kymograph: DELETE → 405, recorded · session 2 ended
+kymograph: egress: 1 attempt (tcp 198.51.100.24:443) · 1 name asked · sink and kernel agree · udp lost 0
+kymograph: inventory complete · era legacy · 4 findings · 2 sessions · 14 exchanges
+kymograph: <span style="color: #7CCB9B">complete</span> → runs/20261008T091702-7f3c/events.jsonl                           <span style="color: #8C939B">exit 0</span>
+
+<span style="color: #8C939B"># 2 · HTTP proxy: a real client talks to us on loopback, we forward to the server</span>
+<span style="color: #7CCB9B">$</span> kymograph listen --port 8800 --upstream http://127.0.0.1:8931/mcp --out-dir runs
+kymograph: listening on <span style="color: #7EA6F2">http://127.0.0.1:8800/mcp</span> — loopback only; point your client here
+kymograph: upstream http://127.0.0.1:8931/mcp · one destination, fixed · no redirect is followed
+  →  request    initialize                            301 B   <span style="color: #8C939B">x1  POST 200 sse  session 1</span>
+  ←  result     #1                                    1.2 kB
+  →  request    tools/list                             96 B   <span style="color: #8C939B">x3  POST 200 json</span>
+  ←  result     #2                                    6.8 kB
+kymograph: <span style="color: #F28B82">403 to a request with Origin https://app.example — not a loopback origin; recorded, not forwarded</span>
+  →  request    tools/call                            212 B   <span style="color: #8C939B">x5  POST 200 sse</span>
+  ←  result     #3                                    740 B
+^C
+kymograph: stopped by the operator · 1 open SSE stream closed · run ended
+kymograph: <span style="color: #7CCB9B">complete</span> → runs/20261008T093511-c04e/events.jsonl                           <span style="color: #8C939B">exit 0</span>
+
+<span style="color: #8C939B"># 3 · a remote endpoint: the gate asks before anything is sent</span>
+<span style="color: #7CCB9B">$</span> kymograph drive --url https://mcp.docs-search.example.com/mcp --scenario all-signals.yaml --out-dir runs
+kymograph: <span style="color: #F28B82">refused: mcp.docs-search.example.com is not local, and a scenario is active.</span>
+            Confirm a written engagement with --engagement-confirmed. Nothing was started.       <span style="color: #8C939B">exit 2</span>
+<span style="color: #7CCB9B">$</span> kymograph drive --url https://mcp.docs-search.example.com/mcp --scenario all-signals.yaml \
+      --engagement-confirmed --token-env DOCS_TOKEN --out-dir runs
+kymograph: isolation remote — <span style="color: #F0A15E">egress not observed</span> · token from $DOCS_TOKEN, sent to this origin only
+kymograph: era probe: server/discover → DiscoverResult → <span style="color: #7EA6F2">modern</span> (2026-07-28)
+<span style="color: #7CCB9B">$</span> <span style="background: #D7DBE0; color: #0F1216"> </span></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:1180}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+
+
+</body></html>

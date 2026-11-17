@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
+<title>Local read-only viewer</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="app.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<button type="button" class="skiplink" id="skip">Skip to content</button>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#/runs" data-slot="package">viewer</a>
+    <nav aria-label="Main" id="nav">
+      <a href="#/runs" data-route="runs">Runs</a>
+      <a href="#/store/runs" data-route="store">Store</a>
+      <a href="#/fleets" data-route="fleets">Fleets</a>
+      <a href="#/corpus" data-route="corpus">Corpus</a>
+      <a href="#/scenarios" data-route="scenarios">Scenarios</a>
+      <a href="#/evidence" data-route="evidence">Evidence</a>
+      <a href="#/signals" data-route="signals">Signals</a>
+      <a href="#/about" data-route="about">About</a>
+    </nav>
+    <div class="top-meta">
+      <span data-slot="version"></span>
+      <span class="ro">local read-only viewer</span>
+      <span data-slot="local"></span>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" aria-live="polite">
+  <p class="loading">Loading…</p>
+</main>
+
+<footer>
+  <span data-slot="footer">Reads recordings, a store, manifests, scenarios, bundles and attestations; writes nothing, runs nothing.</span>
+</footer>
+
+<template id="tpl-pagehead">
+  <section class="pagehead">
+    <div class="eyebrow" data-slot="eyebrow"></div>
+    <h1 tabindex="-1" data-slot="title"></h1>
+    <p class="lede" data-slot="lede"></p>
+  </section>
+</template>
+
+<template id="tpl-panel">
+  <section class="panel">
+    <header class="panel-head">
+      <h2 class="panel-title" data-slot="title"></h2>
+      <span class="panel-note" data-slot="note"></span>
+    </header>
+    <div class="panel-body" data-slot="body"></div>
+  </section>
+</template>
+
+<template id="tpl-notice">
+  <section class="notice" role="note">
+    <div class="notice-head">
+      <span class="notice-kind" data-slot="label"></span>
+      <code class="notice-code" data-slot="kind"></code>
+      <span class="notice-where" data-slot="where"></span>
+    </div>
+    <p class="notice-text" data-slot="text"></p>
+    <div class="notice-body" data-slot="body"></div>
+  </section>
+</template>
+</body>
+</html>

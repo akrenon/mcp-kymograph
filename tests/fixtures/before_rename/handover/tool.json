@@ -1,0 +1,9 @@
+{
+  "recording_schema": 5,
+  "rules_version": 14,
+  "store_schema": "13",
+  "tool": {
+    "content": "sha256:f3ece4cfb401a9af57a74b6eaa667e230ebc04d8c62e4cc044e00c32f8bc22a8",
+    "version": "0.1.0.dev0"
+  }
+}

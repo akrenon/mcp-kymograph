@@ -1,0 +1,76 @@
+# Every signal in the library as its own statement — the "signal as statement" scenario.
+#
+# Observation only: no rules. Each statement names exactly one signal, so a finding that
+# appears or disappears says by its statement which check it came from.
+#
+# Run against the project's reference/poison pair (tests/fixtures/corpus) it has an expected
+# output, pinned in tests/fixtures/corpus/expected.json: nothing on the reference server, and
+# exactly the known set on the poison server.
+version: 1
+name: all-signals
+
+observations:
+  - name: descriptions-invisible_characters
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [invisible_characters]
+  - name: descriptions-chat_template_marker
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [chat_template_marker]
+  - name: descriptions-instruction_override
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [instruction_override]
+  - name: descriptions-concealment_directive
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [concealment_directive]
+  - name: descriptions-output_directive
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [output_directive]
+  - name: descriptions-model_addressed
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [model_addressed]
+  - name: descriptions-hidden_comment
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [hidden_comment]
+  - name: descriptions-role_line
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [role_line]
+  - name: descriptions-whitespace_padding
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [whitespace_padding]
+  - name: descriptions-imperative
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [imperative]
+  - name: descriptions-second_person
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [second_person]
+  - name: descriptions-embedded_url
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [embedded_url]
+  - name: descriptions-base64_block
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [base64_block]
+  - name: descriptions-hidden_html
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [hidden_html]
+  - name: names-tool_name_duplicate
+    match: {method: tools/list}
+    path: result.tools[*].name
+    signals: [tool_name_duplicate]
+  - name: names-tool_name_lookalike
+    match: {method: tools/list}
+    path: result.tools[*].name
+    signals: [tool_name_lookalike]

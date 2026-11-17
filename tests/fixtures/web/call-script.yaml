@@ -1,0 +1,19 @@
+# The discovery listing, then calls: the only way the driver puts a tool's answer into a
+# recording. For the hostile fixture's run that is filed under no engagement (a call is not
+# one of its declared actions). Two of the calls fail, with hostile messages; the tool of the
+# second is named with every kind of hostile character, spelled as hostile_server.composite()
+# makes it (tests/test_web_hostile.py checks they are the same).
+version: 1
+name: hostile-call
+steps:
+  - initialize
+  - list: tools/list
+  - list: resources/list
+  - list: prompts/list
+  - call:
+      tool: plain-tool
+      arguments: {text: hello}
+  - call:
+      tool: "tool-name:<u>u</u><svg onload=alert(2)><script>alert(2)</script>\x07\x1b[0m\u202e\u2066\u200b\ufeff\u0430pple \u0391dmin"
+  - call:
+      tool: erring-long

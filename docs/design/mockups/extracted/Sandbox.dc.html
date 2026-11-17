@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — runc sandbox</title>
+<script src="edb1066e-0e57-4f56-817b-24303d6e9079"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>sandbox sha256:4b1e9c…07ad · target sha256:91fd2e…c3b0</span>
+</div>
+</div>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #DADDE1">
+<nav aria-label="Run views" style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Inventory.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Driver inventory</a>
+<a href="Proxy.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Proxy session</a>
+<a href="Recording.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">HTTP recording</a>
+<a href="Sandbox.dc.html" aria-current="page" style="padding: 14px 12px; font-size: 14px; font-weight: 600; color: #14171A; text-decoration: none; border-bottom: 3px solid #2952A3">Sandbox</a>
+<a href="Verdict.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Verdict</a>
+<a href="Masking.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Masking</a>
+</nav>
+</div>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 22px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1 1 560px">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Isolation · runc · notes-legacy, repetition 24</div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 600">The barrier is structural. The rules only observe.</h1>
+<p style="margin: 0; font-size: 14px; color: #3F454B; line-height: 1.5; max-width: 760px">The target’s network namespace has loopback and a dummy device that discards every packet — no interface that leads anywhere. nftables redirects what it sends to a sink and records every attempt in the kernel. A missing rule costs observation; it opens nothing.</p>
+</div>
+<div role="group" aria-label="Outcome" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+<button type="button" sc-camel-on-click="{{ m.pick }}" aria-pressed="{{ m.pressed }}" style="min-height: 44px; padding: 0 16px; border-radius: 22px; font: inherit; font-size: 14px; cursor: pointer; border: 1px solid {{m.border}}; background: {{m.bg}}; color: {{m.fg}}">{{m.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Topology" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px">
+<div style="flex: 1 1 220px; border: 1px solid #C3C8CE; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; color: #555C64; text-transform: uppercase; letter-spacing: 0.05em">host</div>
+<strong style="font-size: 14px">Kymograph proxy + driver</strong>
+<span style="font-size: 12px; color: #3F454B">one upstream: the bridge’s socket file. Follows no URL from the traffic.</span>
+</div>
+<div style="flex: 0 0 auto; align-self: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555C64; text-align: center">unix socket<br>⇄</div>
+<div style="flex: 1 1 220px; border: 1px solid #C3C8CE; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; color: #555C64; text-transform: uppercase; letter-spacing: 0.05em">ingress bridge</div>
+<strong style="font-size: 14px">binds a Unix socket by path</strong>
+<span style="font-size: 12px; color: #3F454B">no TCP or UDP listener · every capability dropped · connects only to 127.0.0.1:8931</span>
+</div>
+<div style="flex: 0 0 auto; align-self: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555C64; text-align: center">loopback<br>⇄</div>
+<div style="flex: 1 1 260px; border: 2px solid #14171A; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; color: #555C64; text-transform: uppercase; letter-spacing: 0.05em">target · started last</div>
+<strong style="font-size: 14px">notes-legacy</strong>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #3F454B">netns: lo, dummy0 · nothing else</span>
+</div>
+<div style="flex: 0 0 auto; align-self: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #555C64; text-align: center">nft redirect<br>+ mark →</div>
+<div style="flex: 1 1 220px; border: 1px solid #C3C8CE; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; color: #555C64; text-transform: uppercase; letter-spacing: 0.05em">sink · --network none</div>
+<strong style="font-size: 14px">writes down what arrives</strong>
+<span style="font-size: 12px; color: #3F454B">reads each datagram’s mark (SO_RCVMARK); never holds the kernel’s counters</span>
+</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 999 1 620px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">sandbox_step — the proof, in order</h2>
+<span style="font-size: 12px; color: #555C64">the target’s container exists only after every condition held</span>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="9">
+<li style="border-top: 1px solid #E7EAEE; padding: 12px 18px; display: grid; grid-template-columns: 28px minmax(0, 1fr) max-content; gap: 12px; align-items: start; background: {{s.rowBg}}">
+<span style="width: 24px; height: 24px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; background: {{s.dotBg}}; color: {{s.dotFg}}">{{s.mark}}</span>
+<div style="display: flex; flex-direction: column; gap: 3px; min-width: 0">
+<strong style="font-size: 14px">{{s.title}}</strong>
+<span style="font-size: 13px; color: #3F454B">{{s.evidence}}</span>
+</div>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: {{s.dotBg}}">{{s.state}}</span>
+</li>
+</sc-for>
+</ol>
+<sc-if value="{{failed}}" hint-placeholder-val="{{ false }}">
+<div style="border-top: 1px solid #E3A6A6; background: #F6D9D9; color: #5E1212; padding: 14px 18px; font-size: 14px; line-height: 1.5"><strong>sandbox_failed · exit 5.</strong> The probe’s UDP datagram over IPv6 never reached the sink. A probe that only expected its attempts to fail would have reported a blind sandbox as a tight one. No server process exists.</div>
+</sc-if>
+</div>
+
+<div style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Confinement, read back from inside</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>unprivileged user</span><span style="font-family: 'IBM Plex Mono', monospace">uid 65534</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>every capability set empty</span><span style="font-family: 'IBM Plex Mono', monospace">CapEff 0 · CapBnd 0</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>no way to gain one</span><span style="font-family: 'IBM Plex Mono', monospace">NoNewPrivs 1</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>seccomp filter</span><span style="font-family: 'IBM Plex Mono', monospace">Seccomp 2</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>root file system</span><span style="font-family: 'IBM Plex Mono', monospace">read-only</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid #E7EAEE; padding-bottom: 8px"><span>files seen = manifest content</span><span style="font-family: 'IBM Plex Mono', monospace">4 · sha256:e0c41f…9a12</span></li>
+<li style="display: flex; justify-content: space-between; gap: 10px"><span>kernel counters, as the target</span><span style="font-family: 'IBM Plex Mono', monospace">unreadable · unwritable</span></li>
+</ul>
+<p style="margin: 0; font-size: 12px; color: #555C64; line-height: 1.5">runc shares the host’s kernel: it keeps a server off the network, not off the kernel.</p>
+</div>
+</section>
+
+<sc-if value="{{held}}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="eg-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="eg-h" style="margin: 0; font-size: 16px; font-weight: 600">What the server tried to reach</h2>
+<span style="font-size: 12px; color: #555C64">the kernel’s record is authoritative · the sink is held against it by membership</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 860px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Event</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Protocol</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Original destination</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600; text-align: right">Kernel</sc-raw-th><sc-raw-th scope="col" style="padding: 8px; font-weight: 600; text-align: right">Sink</sc-raw-th><sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Membership</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px">egress_attempt</sc-raw-td><sc-raw-td style="padding: 10px 8px">tcp</sc-raw-td><sc-raw-td style="padding: 10px 8px">198.51.100.24:443</sc-raw-td><sc-raw-td style="padding: 10px 8px; text-align: right">3</sc-raw-td><sc-raw-td style="padding: 10px 8px; text-align: right">2</sc-raw-td><sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Sans', sans-serif">both name it ✓ · count differs: retransmission, written down, not judged</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px">egress_dns</sc-raw-td><sc-raw-td style="padding: 10px 8px">udp</sc-raw-td><sc-raw-td style="padding: 10px 8px">127.0.0.11:53 · telemetry.notes.example A, AAAA</sc-raw-td><sc-raw-td style="padding: 10px 8px; text-align: right">2</sc-raw-td><sc-raw-td style="padding: 10px 8px; text-align: right">2</sc-raw-td><sc-raw-td style="padding: 10px 18px; font-family: 'IBM Plex Sans', sans-serif">✓ · the name resolves to an address reachable nowhere</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-top: 1px solid #E7EAEE">
+<div style="padding: 14px 18px; border-right: 1px solid #E7EAEE"><div style="font-size: 12px; color: #555C64">egress_summary</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-top: 4px">sink ≡ kernel</div></div>
+<div style="padding: 14px 18px; border-right: 1px solid #E7EAEE"><div style="font-size: 12px; color: #555C64">udp counted / received</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-top: 4px">2 / 2</div></div>
+<div style="padding: 14px 18px; border-right: 1px solid #E7EAEE"><div style="font-size: 12px; color: #555C64">udp_loss</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-top: 4px">0 · limit 0</div></div>
+<div style="padding: 14px 18px"><div style="font-size: 12px; color: #555C64">account_differences</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; margin-top: 4px">1</div></div>
+</div>
+<div style="padding: 12px 18px; border-top: 1px solid #E7EAEE; font-size: 13px; color: #3F454B">One lost datagram would make the run incomplete: what it carried was not observed, and any tolerance above none would be one a server could aim under.</div>
+</section>
+</sc-if>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1800}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'held' };
+  }
+  renderVals() {
+    const failed = this.state.mode === 'failed';
+    const defs = [
+      ['Sink container started', '--network none · image by id sha256:4b1e9c…07ad'],
+      ['Helper loaded the ruleset, then exited', 'CAP_NET_ADMIN and nothing else · one transaction for IPv4 and IPv6 · dummy0 and routes added after · ruleset read back'],
+      ['Sink armed', 'sockets bound; SINK_BINDINGS match'],
+      ['Ingress bridge listening', 'exactly one Unix socket, bound by path · no other listener in the namespace'],
+      ['Positive probe — every attempt must arrive', 'tcp4 ✓ tcp6 ✓ udp4 ✓ udp6 {u6} dns/udp ✓ dns/tcp ✓ icmp4 ✓ icmp6 ✓ — at the sink and in the kernel; two UDP destinations per family under two different marks'],
+      ['Ingress path proven', 'the probe stood in for the target; a nonce went each way through the bridge'],
+      ['Baseline taken', 'kernel counters read after the probe exited, before the target exists — what moves next is the target’s alone'],
+      ['Gate', 'every condition held'],
+      ['Target started', 'unprivileged, no capabilities, seccomp, read-only root · accepting after 0.41 s']
+    ];
+    const steps = defs.map(([title, ev], i) => {
+      let st = 'held';
+      if (failed && i === 4) st = 'failed';
+      if (failed && i > 4) st = 'not run';
+      const tone = { held: ['✓', '#0F5132', '#FFFFFF', '#FFFFFF'], failed: ['✕', '#8E1B1B', '#FFFFFF', '#FDF1F1'], 'not run': ['–', '#8C939B', '#FFFFFF', '#F5F6F7'] }[st];
+      return { title, evidence: ev.replace('{u6}', failed ? '✕ never arrived' : '✓'), state: st, mark: tone[0], dotBg: tone[1], dotFg: tone[2], rowBg: tone[3] };
+    });
+    const modes = [['held', 'Sandbox held'], ['failed', 'Sandbox failed']].map(([id, label]) => {
+      const on = this.state.mode === id;
+      return { label, pressed: on ? 'true' : 'false', bg: on ? '#14171A' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14171A', border: on ? '#14171A' : '#C3C8CE', pick: () => this.setState({ mode: id }) };
+    });
+    return { steps, modes, failed, held: !failed };
+  }
+}
+</script>
+
+
+</body></html>

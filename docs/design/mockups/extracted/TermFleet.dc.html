@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Terminal — fleet run with repetition</title>
+<script src="a87d9d60-62db-470f-8b00-273255a0b2dc"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7EA6F2}a:hover{color:#A9C4F7}
+</style>
+</helmet>
+<div style="width: 1100px; height: 1060px; box-sizing: border-box; background: #E7EAEE; padding: 24px; font-family: 'IBM Plex Mono', monospace">
+<div style="height: 100%; display: flex; flex-direction: column; background: #0F1216; border-radius: 10px; overflow: hidden; border: 1px solid #2B3036">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #1A1E23; border-bottom: 1px solid #2B3036">
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="flex-grow: 1; text-align: center; font-size: 12px; color: #8C939B">~/assessments/corpus — zsh</span>
+</div>
+<div style="flex-grow: 1; padding: 18px 20px; font-size: 12.5px; line-height: 1.55; color: #D7DBE0; white-space: pre; overflow: hidden"><span style="color: #7CCB9B">$</span> kymograph fleet run --manifest corpus.yaml --store findings.sqlite --repeat --parallel 16 --include-remote
+kymograph: fleet f-0042 · 8 keys · repeat on · budget 100 runs/key · retries ≤ 5/key · rules v4
+kymograph: sandbox sha256:4b1e9c…07ad · target sha256:91fd2e…c3b0 — resolved once, for every entry
+kymograph: remote entries: 1 · one run per origin at a time · 10 s apart · egress not observed
+kymograph: <span style="color: #8C939B">refused before start:</span> shell-tools (real-world) — needs gVisor (runsc); recorded as its result
+
+  key                               considered      progress               state
+  reference-server × all-signals    48 of 55 run    <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #7CCB9B">complete</span>    15 absent
+  poison-server × all-signals       48 of 55 run    <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #7CCB9B">complete</span>    4 stable · 11 absent
+  clock-server × all-signals        62 of 68 run    <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #7CCB9B">complete</span>    1 stable · 2 flaky · 12 absent
+                                                    <span style="color: #8C939B">↻ 1 retried (interrupted)</span>
+  weather-http × all-signals        48 of 54 run    <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #7CCB9B">complete</span>    2 stable · 13 absent
+                                                    <span style="color: #8C939B">↻ 1 retried (images_mismatch)</span>
+  notes-legacy × all-signals       100 of 101 run   <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #E8C766">undecided</span>   1 identity at 3/99 [1.0 %, 9.8 %]
+                                                    <span style="color: #F0A15E">? 1 unknown (step_unanswered: stream_broken)</span> <span style="color: #8C939B">↻ 1 retried</span>
+  notes-legacy × tool-poisoning     48 of 52 run    <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #7CCB9B">complete</span>    3 stable · 12 absent
+  docs-search × all-signals        100 of 100 run   <span style="color: #7EA6F2">████████████████████</span>   <span style="color: #F0A15E">incomplete</span>  3 unknown (rate_limited)
+                                                    <span style="color: #8C939B">“absent” unreachable for 14 identities: each unknown costs 24.2 runs</span>
+  shell-tools × all-signals          0 of 0 run     <span style="color: #555C64">····················</span>   refused
+
+kymograph: 485 runs scheduled · 454 considered · 3 retried · 28 past n*, filed and not counted
+kymograph: filed in findings.sqlite · fleet_series 8 rows · fleet_rates 117 rows
+kymograph: digests  cmp 3f9a…c210 · full 81d2…07fb
+{"fleet": "f-0042", "repeat": true, "keys": 8, "states": {"complete": 5, "undecided": 1,
+ "incomplete": 1, "refused": 1}, "runs": {"scheduled": 485, "considered": 454, "retried": 3},
+ "problems": []}                                                                         <span style="color: #8C939B">exit 3</span>
+
+<span style="color: #7CCB9B">$</span> kymograph fleet diff --store findings.sqlite
+kymograph: f-0041 → f-0042 · both repeated · rules v4 on both sides
+  new        1   weather-http      get_forecast · hidden_comment         absent → stable    <span style="color: #8C939B">server moved</span>
+  gone       1   weather-http      get_alerts · output_directive         stable → absent    <span style="color: #8C939B">server moved</span>
+  gone       1   clock-server      now · whitespace_padding              stable → —         <span style="color: #F0A15E">cap_hint</span><span style="color: #8C939B"> — may only be missing</span>
+  drift          notes-legacy × tool-poisoning — scenario digest moved · 2 statement_added · 1 statement_removed
+  rate moved 2   clock-server      now · base64_block           14/48 → 3/62   p 0.0008  BH 0.0032
+                 clock-server      now · invisible_characters   24/48 → 13/62  p 0.0021  BH 0.0042
+                 <span style="color: #8C939B">no axis moved: cannot be attributed</span>
+  not flagged 1  notes-legacy      search_notes · output_directive   19/48 → 31/99  BH 0.48
+  undecided  1   notes-legacy      both sides, not moved                         <span style="color: #8C939B">--verbose lists it</span>
+  caveat         notes-legacy × tool-poisoning — environment_moved (target image rebuilt), findings unchanged
+  <span style="color: #F0A15E">incomplete</span>     docs-search × all-signals — series incomplete in f-0042: gone may only be missing
+kymograph: same_result false                                                                <span style="color: #8C939B">exit 3</span>
+<span style="color: #7CCB9B">$</span> <span style="background: #D7DBE0; color: #0F1216"> </span></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:1060}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+
+
+</body></html>

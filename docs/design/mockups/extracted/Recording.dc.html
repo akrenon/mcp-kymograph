@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — HTTP run recording</title>
+<script src="8bd6423e-b16c-48dc-824d-292def74021e"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Runs</a>
+<a href="Main.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>recording schema 4 · rules v4</span>
+</div>
+</div>
+</header>
+
+<div style="background: #FFFFFF; border-bottom: 1px solid #DADDE1">
+<nav aria-label="Run views" style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Inventory.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Driver inventory</a>
+<a href="Proxy.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Proxy session</a>
+<a href="Recording.dc.html" aria-current="page" style="padding: 14px 12px; font-size: 14px; font-weight: 600; color: #14171A; text-decoration: none; border-bottom: 3px solid #2952A3">HTTP recording</a>
+<a href="Sandbox.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Sandbox</a>
+<a href="Verdict.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Verdict</a>
+<a href="Masking.dc.html" style="padding: 14px 12px; font-size: 14px; color: #3F454B; text-decoration: none; border-bottom: 3px solid transparent">Masking</a>
+</nav>
+</div>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 28px 24px 64px; display: flex; flex-direction: column; gap: 22px">
+
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1 1 560px">
+<nav aria-label="Breadcrumb" style="font-size: 13px; color: #555C64; display: flex; flex-wrap: wrap; gap: 8px"><a href="Main.dc.html">Fleet f-0042</a><span aria-hidden="true">›</span><a href="Series.dc.html">{{v.entry}}</a><span aria-hidden="true">›</span><span>{{v.crumb}}</span></nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 600; font-family: 'IBM Plex Mono', monospace">{{v.run}}</h1>
+<span style="display: inline-block; padding: 4px 12px; border-radius: 14px; font-size: 13px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; background: {{v.stBg}}; color: {{v.stFg}}">{{v.state}}</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+<sc-for list="{{v.chips}}" as="c" hint-placeholder-count="6"><span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">{{c}}</span></sc-for>
+</div>
+</div>
+<div role="group" aria-label="Example run" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+<button type="button" sc-camel-on-click="{{ m.pick }}" aria-pressed="{{ m.pressed }}" style="min-height: 44px; padding: 0 16px; border-radius: 22px; font: inherit; font-size: 14px; cursor: pointer; border: 1px solid {{m.border}}; background: {{m.bg}}; color: {{m.fg}}">{{m.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+<sc-for list="{{v.cards}}" as="k" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">{{k.title}}</h2>
+<ol style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: #3F454B">
+<sc-for list="{{k.lines}}" as="l" hint-placeholder-count="3"><li>{{l}}</li></sc-for>
+</ol>
+<p style="margin: 0; font-size: 12px; color: #555C64; line-height: 1.5">{{k.foot}}</p>
+</div>
+</sc-for>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+<div style="flex: 999 1 640px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Exchanges</h2>
+<span style="font-size: 12px; color: #555C64">http_request · http_response · http_end, linked to the messages they carried</span>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">#</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">Conn</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">HTTP</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">MCP</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">Status</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">Framing</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 8px; font-weight: 600">{{v.col}}</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Ended</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-for list="{{rows}}" as="x" hint-placeholder-count="8">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; background: {{x.bg}}">
+<sc-raw-td style="padding: 0 0 0 10px"><button type="button" sc-camel-on-click="{{ x.pick }}" aria-pressed="{{ x.pressed }}" aria-label="Show exchange {{x.n}}" style="min-width: 40px; min-height: 40px; border: 0; background: none; font: inherit; font-weight: 600; cursor: pointer; color: #2952A3">{{x.n}}</button></sc-raw-td>
+<sc-raw-td style="padding: 8px; color: #555C64">{{x.conn}}</sc-raw-td>
+<sc-raw-td style="padding: 8px">{{x.verb}}</sc-raw-td>
+<sc-raw-td style="padding: 8px">{{x.mcp}}</sc-raw-td>
+<sc-raw-td style="padding: 8px"><span style="display: inline-block; padding: 1px 7px; border-radius: 3px; font-weight: 600; background: {{x.stBg}}; color: {{x.stFg}}">{{x.status}}</span></sc-raw-td>
+<sc-raw-td style="padding: 8px; color: #3F454B">{{x.framing}}</sc-raw-td>
+<sc-raw-td style="padding: 8px; color: #3F454B">{{x.sess}}</sc-raw-td>
+<sc-raw-td style="padding: 8px 18px; color: #3F454B; font-family: 'IBM Plex Sans', sans-serif">{{x.ended}}</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+<sc-if value="{{v.hasSkip}}" hint-placeholder-val="{{ true }}">
+<sc-raw-tr style="border-top: 1px dashed #C3C8CE">
+<sc-raw-td style="padding: 10px 18px; color: #555C64">—</sc-raw-td>
+<sc-raw-td colspan="7" style="padding: 10px 8px; color: #3F454B">{{v.skipLine}}</sc-raw-td>
+</sc-raw-tr>
+</sc-if>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; background: #14171A; color: #E7EAEE; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600; color: #FFFFFF">Exchange {{sel.n}}</h2>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">{{sel.verb}} · {{sel.mcp}}</span>
+</div>
+<div>
+<div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #AEB4BB; margin-bottom: 6px">request head · masked</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; background: #1F2328; border-radius: 6px; padding: 10px 12px">{{sel.req}}</div>
+</div>
+<div>
+<div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #AEB4BB; margin-bottom: 6px">response head · masked</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; background: #1F2328; border-radius: 6px; padding: 10px 12px">{{sel.res}}</div>
+</div>
+<div>
+<div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #AEB4BB; margin-bottom: 6px">body</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; background: #1F2328; border-radius: 6px; padding: 10px 12px">{{sel.body}}</div>
+</div>
+<div style="font-size: 13px; line-height: 1.5; color: #E7EAEE; border-top: 1px solid #2B3036; padding-top: 12px">{{sel.note}}</div>
+</div>
+</section>
+
+<section aria-labelledby="fd-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="padding: 14px 18px; border-bottom: 1px solid #DADDE1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px">
+<h2 id="fd-h" style="margin: 0; font-size: 16px; font-weight: 600">Findings in this run</h2>
+<span style="font-size: 12px; color: #555C64">statements evaluated on what the server sent, before any rule</span>
+</div>
+<sc-if value="{{v.hasFindings}}" hint-placeholder-val="{{ true }}">
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 900px; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">Signal</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Locator</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Path this run</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px; font-weight: 600">Exchange · framing</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 8px 18px; font-weight: 600">normalized</sc-raw-th>
+</sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-for list="{{v.findings}}" as="f" hint-placeholder-count="4">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 10px 18px; font-weight: 600">{{f.signal}}</sc-raw-td><sc-raw-td style="padding: 10px 8px; word-break: break-all">{{f.locator}}</sc-raw-td><sc-raw-td style="padding: 10px 8px; color: #555C64">{{f.path}}</sc-raw-td><sc-raw-td style="padding: 10px 8px">{{f.where}}</sc-raw-td><sc-raw-td style="padding: 10px 18px">{{f.norm}}</sc-raw-td></sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</sc-if>
+<sc-if value="{{v.noFindings}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 16px 18px; font-size: 14px; color: #3F454B; line-height: 1.5">{{v.noFindingsText}}</div>
+</sc-if>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">{{v.leftTitle}}</h2>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; background: #F5F6F7; border-radius: 6px; padding: 12px; white-space: pre-wrap; word-break: break-all">{{v.leftJson}}</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">verdict</h2>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.6; background: #F5F6F7; border-radius: 6px; padding: 12px; white-space: pre-wrap; word-break: break-all">{{v.verdictJson}}</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">What holds in every HTTP run</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px 24px; font-size: 13px; color: #3F454B; line-height: 1.5">
+<li><strong style="color: #14171A">The forwarding side parses HTTP, never MCP.</strong> Heads, Content-Length, chunk boundaries. JSON-RPC and SSE are parsed on a copy that cannot block it.</li>
+<li><strong style="color: #14171A">One destination, fixed before the run.</strong> No redirect, no <code style="font-family: 'IBM Plex Mono', monospace">endpoint</code> event, no metadata URL is ever followed.</li>
+<li><strong style="color: #14171A">A framing error costs observation, not the connection.</strong> That connection goes verbatim; <code style="font-family: 'IBM Plex Mono', monospace">http_end</code> says <code style="font-family: 'IBM Plex Mono', monospace">framing_error</code>.</li>
+<li><strong style="color: #14171A">A batch is one message event</strong>, each element inspected on its own, its index part of a finding’s path (2025-03-26 only).</li>
+<li><strong style="color: #14171A">HTTP+SSE (2024-11-05) is refused</strong> at the manifest: it lets the server choose where the client sends.</li>
+<li><strong style="color: #14171A">Counts are made where traffic is forwarded</strong> and written into run_finished — the cross-check that survives dropped events.</li>
+</ul>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1900}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'legacy', sel: { legacy: 9, modern: 2, unauthorized: 0 } };
+  }
+  renderVals() {
+    const H = 'Host: 127.0.0.1:8931\nAccept: application/json, text/event-stream\nContent-Type: application/json';
+    const HM = 'Host: 127.0.0.1:8930\nAccept: application/json, text/event-stream\nContent-Type: application/json\nMCP-Protocol-Version: 2026-07-28';
+    const HR = 'Host: mcp.docs-search.example.com\nAccept: application/json, text/event-stream\nContent-Type: application/json\nMCP-Protocol-Version: 2026-07-28\nAuthorization: ▇▇▇ masked (from $DOCS_TOKEN)';
+    const views = {
+      legacy: {
+        label: 'legacy · sessions', entry: 'notes-legacy × all-signals', crumb: 'repetition 24', run: 'runs/20261008T091702-7f3c', state: 'complete · exit 0', stBg: '#DCEFE4', stFg: '#0F5132',
+        chips: ['mode drive · script discovery', 'transport streamable-http', 'era legacy · 2025-11-25', 'listen 127.0.0.1:8931 /mcp', 'isolation runc · ingress bridge', 'duration 3.84 s'],
+        col: 'Sess.', hasSkip: true, skipLine: 'step_skipped · prompts/list · capability_not_offered — not sent, and the recording says so',
+        cards: [
+          { title: 'Era detection', lines: ['server/discover with modern _meta and headers', 'answer 400, empty body — not a recognised modern error', 'decided legacy → initialize, the script as over stdio'], foot: 'Same server, same decision, every run.' },
+          { title: 'Sessions', lines: ['session 1 opened at #2, ended by a 404 at #7', 'one new session, the script from the top — at most once per run', 'session 2 carries the whole inventory; pages are not stitched across sessions'], foot: 'Session ids are never recorded — only their ordinal. A second 404 would end the script: session_lost.' },
+          { title: 'run_finished.http', lines: ['exchanges 14 · connections 4 · sessions 2', 'sse streams 4 · events 6 · comments 3 · resumptions 1', 'framing errors 0 · 403s 0'], foot: 'Made where traffic is forwarded; the verdict judges from these counts and the driver’s events, never from whether a droppable event is present.' }
+        ],
+        ex: [
+          { conn: 1, verb: 'POST', mcp: 'server/discover', status: 400, framing: 'empty', sess: '—', ended: 'complete · era probe', req: 'POST /mcp HTTP/1.1\n' + H + '\nMCP-Protocol-Version: 2026-07-28\nMcp-Method: server/discover', res: 'HTTP/1.1 400 Bad Request\nContent-Length: 0', body: '(empty)', note: 'An empty 400 is not a modern error (−32020, −32021, −32022): the driver falls back to the legacy handshake.' },
+          { conn: 1, verb: 'POST', mcp: 'initialize', status: 200, framing: 'sse · 1 event', sess: '1', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H, res: 'HTTP/1.1 200 OK\nContent-Type: text/event-stream\nMcp-Session-Id: ▇▇▇ session 1', body: 'id: h:5c1e…\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25", …}}', note: 'Session 1 opened. Its id is blanked: it grants access, so it is closer to a bearer token than a correlation id.' },
+          { conn: 1, verb: 'POST', mcp: 'notifications/initialized', status: 202, framing: 'empty', sess: '1', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 1\nMCP-Protocol-Version: 2025-11-25', res: 'HTTP/1.1 202 Accepted', body: '(empty)', note: 'A notification is accepted with 202 and carries no body.' },
+          { conn: 2, verb: 'GET', mcp: '(server stream)', status: 200, framing: 'sse · 2 events', sess: '1', ended: 'closed after event id · retry 1500', req: 'GET /mcp HTTP/1.1\nHost: 127.0.0.1:8931\nAccept: text/event-stream\nMcp-Session-Id: ▇▇▇ session 1', res: 'HTTP/1.1 200 OK\nContent-Type: text/event-stream', body: ': keep-alive\nid: h:91ab…\ndata: {"jsonrpc":"2.0","method":"notifications/message", …}\nretry: 1500', note: 'The legacy GET stream is held for the script: what a server volunteers belongs in the recording. The server closed the connection after an event id.' },
+          { conn: 3, verb: 'GET', mcp: '(resume stream 4)', status: 200, framing: 'sse · 1 event', sess: '1', ended: 'held until session end', req: 'GET /mcp HTTP/1.1\nHost: 127.0.0.1:8931\nAccept: text/event-stream\nMcp-Session-Id: ▇▇▇ session 1\nLast-Event-ID: h:91ab…', res: 'HTTP/1.1 200 OK\nContent-Type: text/event-stream', body: 'id: h:91ac…\ndata: {"jsonrpc":"2.0","method":"notifications/tools/list_changed"}', note: 'Resumption 1 of at most 3, after waiting the server’s retry. Event ids are keyed pseudonyms: the relation survives, the value does not.' },
+          { conn: 1, verb: 'POST', mcp: 'tools/list', status: 200, framing: 'json', sess: '1', ended: 'complete · nextCursor', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 1\nMCP-Protocol-Version: 2025-11-25', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":1,"result":{"tools":[…5],"nextCursor":"…"}}', note: 'First page in session 1. Kept in the recording, but it does not count towards the inventory.' },
+          { conn: 1, verb: 'POST', mcp: 'tools/list (cursor)', status: 404, framing: 'empty', sess: '1', ended: 'session 1 ended · 404', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 1', res: 'HTTP/1.1 404 Not Found', body: '(empty)', note: 'The server ended session 1. The driver starts one new session and runs the script from the top.' },
+          { conn: 4, verb: 'POST', mcp: 'initialize', status: 200, framing: 'sse · 1 event', sess: '2', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H, res: 'HTTP/1.1 200 OK\nContent-Type: text/event-stream\nMcp-Session-Id: ▇▇▇ session 2', body: 'id: h:0d77…\ndata: {"jsonrpc":"2.0","id":2,"result":{…}}', note: 'Session 2 opened. Everything the inventory says comes from this session.' },
+          { conn: 4, verb: 'POST', mcp: 'notifications/initialized', status: 202, framing: 'empty', sess: '2', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 2', res: 'HTTP/1.1 202 Accepted', body: '(empty)', note: 'The handshake is complete again.' },
+          { conn: 4, verb: 'POST', mcp: 'tools/list', status: 200, framing: 'json', sess: '2', ended: 'complete · nextCursor', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 2\nMCP-Protocol-Version: 2025-11-25', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":3,"result":{"tools":[\n  {"name":"create_note",\n   "description":"Create a note.<!-- [finding: hidden_comment] -->"}, …],\n "nextCursor":"…"}}', note: 'Finding: hidden_comment at result.tools[name="create_note"].description, found in the raw text.' },
+          { conn: 4, verb: 'POST', mcp: 'tools/list (cursor)', status: 200, framing: 'json', sess: '2', ended: 'complete · last page', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 2', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":4,"result":{"tools":[…2]}}', note: 'Last page; there is no nextCursor. Three findings come from this page, two of them visible only in the normalised copy.' },
+          { conn: 4, verb: 'POST', mcp: 'resources/list', status: 200, framing: 'json', sess: '2', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 2', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":5,"result":{"resources":[…3]}}', note: 'No signal fired.' },
+          { conn: 4, verb: 'POST', mcp: 'resources/templates/list', status: 200, framing: 'json', sess: '2', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + H + '\nMcp-Session-Id: ▇▇▇ session 2', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":6,"result":{"resourceTemplates":[…1]}}', note: 'No signal fired. prompts/list follows as step_skipped.' },
+          { conn: 4, verb: 'DELETE', mcp: '(end session)', status: 405, framing: 'empty', sess: '2', ended: 'complete · legitimate answer', req: 'DELETE /mcp HTTP/1.1\nHost: 127.0.0.1:8931\nMcp-Session-Id: ▇▇▇ session 2', res: 'HTTP/1.1 405 Method Not Allowed', body: '(empty)', note: 'DELETE is the HTTP goodbye. A 405 is a legitimate answer: it is recorded and is not a shortfall.' }
+        ],
+        hasFindings: true, findings: [
+          { signal: 'hidden_comment', locator: 'result.tools[name="create_note"].description', path: 'result.tools[0].description', where: '10 · json', norm: 'false' },
+          { signal: 'output_directive', locator: 'result.tools[name="search_notes"].description', path: 'result.tools[3].description', where: '11 · json', norm: 'true' },
+          { signal: 'model_addressed', locator: 'result.tools[name="search_notes"].description', path: 'result.tools[3].description', where: '11 · json', norm: 'false' },
+          { signal: 'tool_name_collision', locator: 'result.tools[name="searchNotes"].name', path: 'result.tools[4].name', where: '11 · json', norm: 'true' }
+        ],
+        leftTitle: 'script_finished', leftJson: '{"type": "script_finished", "script": "discovery",\n "inventory": "complete", "era": "legacy",\n "protocol_version": "2025-11-25", "session": 2,\n "steps_sent": 5, "steps_skipped": ["prompts/list"],\n "reinitialised": 1}',
+        verdictJson: '{"state": "complete", "exit": 0, "causes": [],\n "rules_version": 4, "transport": "streamable-http",\n "isolation": "runc", "egress": {"attempts": 1,\n "destinations": ["tcp 198.51.100.24:443"],\n "dns": ["telemetry.notes.example"], "udp_loss": 0}}'
+      },
+      modern: {
+        label: 'modern · re-issue', entry: 'weather-http × all-signals', crumb: 'repetition 7', run: 'runs/20261008T092210-4ac8', state: 'complete · exit 0', stBg: '#DCEFE4', stFg: '#0F5132',
+        chips: ['mode drive · script discovery', 'transport streamable-http', 'era modern · 2026-07-28', 'listen 127.0.0.1:8930 /mcp', 'isolation runc · ingress bridge', 'duration 2.17 s'],
+        col: 'Meta', hasSkip: true, skipLine: 'step_skipped · prompts/list · capability_not_offered — DiscoverResult.capabilities names tools and resources only',
+        cards: [
+          { title: 'Era detection', lines: ['server/discover with modern _meta and headers', 'answer 200 with a DiscoverResult', 'decided modern — no initialize, no session; the listings follow with _meta and headers'], foot: 'A recognised modern error (−32020 HeaderMismatch, −32021, −32022) would decide modern too.' },
+          { title: 'Re-issue', lines: ['#2 tools/list answered on an SSE stream scoped to the request', 'the stream was reset after one event — the in-flight request is lost', 'the driver re-issues it once, with a new id (#3); recorded as such'], foot: 'A second broken stream would leave the step short by stream_broken. No Last-Event-ID, no GET: the revision has no resumption.' },
+          { title: 'run_finished.http', lines: ['exchanges 6 · connections 1 · sessions 0', 'sse streams 1 · events 1 · reissued 1', 'framing errors 0 · 403s 0'], foot: 'Capabilities and the announced name come from DiscoverResult and _meta serverInfo — self-reported, like the legacy initialize answer.' }
+        ],
+        ex: [
+          { conn: 1, verb: 'POST', mcp: 'server/discover', status: 200, framing: 'json', sess: '_meta ✓', ended: 'complete · era probe', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: server/discover', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":0,"result":{"capabilities":{"tools":{},"resources":{}},\n "_meta":{"io.modelcontextprotocol/serverInfo":{"name":"weather","version":"3.1"}}}}', note: 'A DiscoverResult: modern. The announced name is recorded beside the findings; the entry’s name keys them.' },
+          { conn: 1, verb: 'POST', mcp: 'tools/list', status: 200, framing: 'sse · 1 event', sess: '_meta ✓', ended: 'reset after 1 event · stream_broken', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: tools/list', res: 'HTTP/1.1 200 OK\nContent-Type: text/event-stream', body: 'data: {"jsonrpc":"2.0","method":"notifications/progress", …}\n\n(connection reset)', note: 'The request is lost with the stream. Modern: clients MUST re-issue it as a new request with a new id.' },
+          { conn: 1, verb: 'POST', mcp: 'tools/list (re-issued)', status: 200, framing: 'json', sess: '_meta ✓', ended: 'complete · nextCursor', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: tools/list', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":2,"method":"tools/list",\n "params":{"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28",\n  "io.modelcontextprotocol/clientInfo":{"name":"mcp-kymograph","version":"0.2.0"}}}}\n\n→ {"result":{"tools":[\n  {"name":"get_forecast","description":"Forecast.<!-- [finding: hidden_comment] -->"}, …]}}', note: 'The re-issued request carries the version in _meta; the header MUST match it, else 400 HeaderMismatch. clientInfo names Kymograph truthfully.' },
+          { conn: 1, verb: 'POST', mcp: 'tools/list (cursor)', status: 200, framing: 'json', sess: '_meta ✓', ended: 'complete · last page', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: tools/list', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":3,"result":{"tools":[…1]}}', note: 'Last page.' },
+          { conn: 1, verb: 'POST', mcp: 'resources/list', status: 200, framing: 'json', sess: '_meta ✓', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: resources/list', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":4,"result":{"resources":[…2]}}', note: 'No signal fired.' },
+          { conn: 1, verb: 'POST', mcp: 'resources/templates/list', status: 200, framing: 'json', sess: '_meta ✓', ended: 'complete', req: 'POST /mcp HTTP/1.1\n' + HM + '\nMcp-Method: resources/templates/list', res: 'HTTP/1.1 200 OK\nContent-Type: application/json', body: '{"jsonrpc":"2.0","id":5,"result":{"resourceTemplates":[…1]}}', note: 'The script ends here: the revision has no DELETE and no end of input. Open streams, if any, are closed.' }
+        ],
+        hasFindings: true, findings: [
+          { signal: 'hidden_comment', locator: 'result.tools[name="get_forecast"].description', path: 'result.tools[0].description', where: '3 · json', norm: 'false' },
+          { signal: 'model_addressed', locator: 'result.tools[name="get_weather"].description', path: 'result.tools[1].description', where: '3 · json', norm: 'false' }
+        ],
+        leftTitle: 'script_finished', leftJson: '{"type": "script_finished", "script": "discovery",\n "inventory": "complete", "era": "modern",\n "protocol_version": "2026-07-28", "session": null,\n "steps_sent": 4, "steps_skipped": ["prompts/list"],\n "reissued": [{"step": "tools/list", "reason": "stream_broken"}]}',
+        verdictJson: '{"state": "complete", "exit": 0, "causes": [],\n "rules_version": 4, "transport": "streamable-http",\n "isolation": "runc", "egress": {"attempts": 0,\n "destinations": [], "dns": [], "udp_loss": 0}}'
+      },
+      unauthorized: {
+        label: '401 · remote endpoint', entry: 'docs-search × all-signals', crumb: 'repetition 0', run: 'runs/20261008T094007-e21b', state: 'server_failed · exit 4', stBg: '#F6D9D9', stFg: '#8E1B1B',
+        chips: ['mode drive · script discovery', 'transport streamable-http', 'era modern · 2026-07-28', 'origin https://mcp.docs-search.example.com', 'isolation remote · egress not observed', 'engagement confirmed · duration 0.62 s'],
+        col: 'Auth', hasSkip: true, skipLine: 'step_skipped ×4 · handshake_incomplete — nothing after a refused first step',
+        cards: [
+          { title: 'The driver never runs an OAuth flow', lines: ['fetches no metadata, contacts no authorization server, opens no browser', 'the operator supplies a token: a file, or an environment variable’s name — never argv', 'sends it to the run’s one origin and nowhere else'], foot: 'A 401 or 403 is recorded with its parsed challenge and ends the step: unauthorized.' },
+          { title: 'WWW-Authenticate — parsed before masking', lines: ['scheme Bearer', 'resource_metadata https://mcp.docs-search.example.com/.well-known/oauth-protected-resource', 'scope mcp:read · error invalid_token'], foot: 'The one header parsed first: unparsed, the needle auth would blank it whole. Where a server sends clients for a token is worth seeing.' },
+          { title: 'Remote: what cannot be said', lines: ['no sandbox, so no egress attempt and no name asked can exist', 'a comparison never puts a change down to the environment', 'one run per origin at a time, 10 s apart; never part of an ordinary fleet run'], foot: 'The gate turned the typed --target into a fact: the URL’s host. Every corpus run of a remote entry needs --engagement-confirmed.' }
+        ],
+        ex: [
+          { conn: 1, verb: 'POST', mcp: 'server/discover', status: 401, framing: 'json', sess: 'Bearer ▇▇▇', ended: 'complete · unauthorized', req: 'POST /mcp HTTP/1.1\n' + HR + '\nMcp-Method: server/discover', res: 'HTTP/1.1 401 Unauthorized\nWWW-Authenticate: Bearer resource_metadata="https://mcp.docs-search.example.com/.well-known/oauth-protected-resource", scope="mcp:read", error="invalid_token"\nContent-Type: application/json', body: '{"error":"invalid_token","error_description":"[server’s text, recorded verbatim]"}', note: 'The token from $DOCS_TOKEN was refused. The terminal names the host the server sends clients to and says the operator has to obtain a token; the tool does not.' }
+        ],
+        hasFindings: false, noFindings: true, noFindingsText: 'Nothing was observed: the first step was refused with 401, so no handshake, no listing, no statement evaluated. server_failed — not “no findings”.',
+        leftTitle: 'server_failed', leftJson: '{"type": "server_failed", "reason": "unauthorized",\n "detail": {"status": 401, "challenge": {"scheme": "Bearer",\n  "resource_metadata": "https://mcp.docs-search.example.com/.well-known/oauth-protected-resource",\n  "scope": "mcp:read", "error": "invalid_token"}}}\n{"type": "script_finished", "inventory": "none", "era": "modern"}',
+        verdictJson: '{"state": "server_failed", "exit": 4,\n "causes": ["server_failed"],\n "rules_version": 4, "transport": "streamable-http",\n "isolation": "remote", "egress": null,\n "note": "egress not observed"}'
+      }
+    };
+    const m = this.state.mode, v = views[m];
+    const tone = (s) => s < 300 ? ['#DCEFE4', '#0F5132'] : (s === 405 ? ['#ECEEF0', '#3F454B'] : ['#F8E1CC', '#7A3300']);
+    const selIdx = Math.min(this.state.sel[m] ?? 0, v.ex.length - 1);
+    const rows = v.ex.map((x, i) => {
+      const on = selIdx === i, t = tone(x.status);
+      return { ...x, n: i + 1, stBg: t[0], stFg: t[1], bg: on ? '#F0F4FC' : '#FFFFFF', pressed: on ? 'true' : 'false', pick: () => this.setState({ sel: { ...this.state.sel, [m]: i } }) };
+    });
+    const modes = Object.keys(views).map((id) => {
+      const on = m === id;
+      return { label: views[id].label, pressed: on ? 'true' : 'false', bg: on ? '#14171A' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14171A', border: on ? '#14171A' : '#C3C8CE', pick: () => this.setState({ mode: id }) };
+    });
+    return { v: { ...v, noFindings: !v.hasFindings }, rows, sel: rows[selIdx], modes };
+  }
+}
+</script>
+
+
+</body></html>

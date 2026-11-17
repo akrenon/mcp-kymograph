@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "name": "marking",
+  "steps": [
+    "initialize",
+    {
+      "list": "tools/list"
+    },
+    {
+      "call": {
+        "tool": "read_file",
+        "arguments": {}
+      }
+    }
+  ]
+}

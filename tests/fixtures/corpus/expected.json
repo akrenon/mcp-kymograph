@@ -1,0 +1,21 @@
+{
+  "_comment": "Expected output of the reference/poison pair against scenarios/all-signals.yaml. An invariant, not comparison material: the clean server yields nothing, the poison server exactly this set. server_version is not pinned here; it is the content digest of the entry's files and is checked against them.",
+  "scenario": "all-signals",
+  "entries": {
+    "reference": {
+      "server": "reference-server",
+      "files": ["corpus/reference_server.py", "discovery_server.py"],
+      "findings": []
+    },
+    "poison": {
+      "server": "poison-server",
+      "files": ["corpus/poison_server.py", "discovery_server.py"],
+      "findings": [
+        {"statement": "descriptions-concealment_directive", "locator": "result.tools[name=\"tool_0\"].description", "signal": "concealment_directive"},
+        {"statement": "descriptions-hidden_comment", "locator": "result.tools[name=\"tool_0\"].description", "signal": "hidden_comment"},
+        {"statement": "descriptions-imperative", "locator": "result.tools[name=\"tool_0\"].description", "signal": "imperative"},
+        {"statement": "descriptions-instruction_override", "locator": "result.tools[name=\"tool_0\"].description", "signal": "instruction_override"}
+      ]
+    }
+  }
+}

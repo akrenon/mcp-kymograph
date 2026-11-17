@@ -1,0 +1,13 @@
+# Observation only: no rules, one statement. It asks for two signals in every tool
+# description the server sends. The point of the fixture is the normalisation in front of the
+# signals: a description that spells "ignore all previous instructions" with a zero-width
+# space inside a word slips past the raw pattern and is caught once the text is normalised.
+version: 1
+name: instruction-in-disguise
+
+observations:
+  - name: description-overrides-instructions
+    description: A tool description tells the reader to drop the instructions it already has.
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [instruction_override, hidden_comment]

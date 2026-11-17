@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>mcp-kymograph — fleet report</title>
+<script src="87674c13-43dd-4f58-b2c3-163195e30dc1"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F7}
+a{color:#2952A3}a:hover{color:#1B3A78}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171A; background: #F5F6F7; min-height: 100vh">
+
+<header style="background: #14171A; color: #F5F6F7">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Main.dc.html" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 17px; color: #F5F6F7; text-decoration: none">mcp-kymograph</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1">
+<a href="Corpus.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Corpus</a>
+<a href="Scenario.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Scenarios</a>
+<a href="Signals.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Signals</a>
+<a href="Inventory.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Runs</a>
+<a href="Main.dc.html" aria-current="page" style="color: #FFFFFF; background: #2B3036; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500">Fleets</a>
+<a href="Compare.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Compare</a>
+<a href="Store.dc.html" style="color: #C9CED4; padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 14px">Store</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #AEB4BB">
+<span>store findings.sqlite · schema 9</span>
+<span>rules v4</span>
+<span>tool 0.2.0</span>
+</div>
+</div>
+</header>
+
+<main style="max-width: 1360px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-direction: column; gap: 28px">
+
+<section style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px">
+<div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<div style="font-size: 13px; color: #555C64; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600">Fleet run</div>
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600">f-0042 <span style="color: #555C64; font-weight: 400">· 8 Oct 2026, 09:14 UTC</span></h1>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap">$ kymograph fleet run --manifest corpus.yaml --store findings.sqlite --repeat --parallel 16 --include-remote</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Compare.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 6px; background: #2952A3; color: #FFFFFF; text-decoration: none; font-weight: 500; font-size: 14px">Compare with f-0041</a>
+<a href="TermFleet.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 6px; background: #FFFFFF; border: 1px solid #C3C8CE; color: #14171A; text-decoration: none; font-weight: 500; font-size: 14px">Raw JSON</a>
+</div>
+</section>
+
+<section aria-label="Fleet parameters" style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">repeat: on</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">budget 100 runs / key</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">retries ≤ 5 / key</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">parallel 16</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">p₀ 0.01 · p₁ 0.10 · α 0.10 · β 0.01</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">sandbox sha256:4b1e9c…07ad</span>
+<span style="background: #E7EAEE; padding: 6px 10px; border-radius: 4px">target python:3.12-slim sha256:91fd2e…c3b0</span>
+</section>
+
+<section aria-label="Summary" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Keys (entry × scenario)</div>
+<div style="font-size: 30px; font-weight: 600">8</div>
+<div style="font-size: 12px; color: #555C64">7 entries · 2 scenarios</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Series complete</div>
+<div style="font-size: 30px; font-weight: 600; color: #0F5132">5</div>
+<div style="font-size: 12px; color: #555C64">every identity decided</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Undecided</div>
+<div style="font-size: 30px; font-weight: 600; color: #5C4700">1</div>
+<div style="font-size: 12px; color: #555C64">budget reached, interval shown</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Incomplete</div>
+<div style="font-size: 30px; font-weight: 600; color: #8A3B00">1</div>
+<div style="font-size: 12px; color: #555C64">non-results blocked a decision</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Refused</div>
+<div style="font-size: 30px; font-weight: 600; color: #3F454B">1</div>
+<div style="font-size: 12px; color: #555C64">not run, recorded as result</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #555C64">Runs</div>
+<div style="font-size: 30px; font-weight: 600">454 <span style="font-size: 15px; font-weight: 400; color: #555C64">/ 485</span></div>
+<div style="font-size: 12px; color: #555C64">considered / scheduled · 3 retried</div>
+</div>
+</section>
+
+<section aria-labelledby="series-h" style="background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #DADDE1">
+<h2 id="series-h" style="margin: 0; font-size: 18px; font-weight: 600">Series by entry and scenario</h2>
+<div role="group" aria-label="Filter by state" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
+<button type="button" sc-camel-on-click="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="min-height: 36px; padding: 0 12px; border-radius: 18px; font: inherit; font-size: 13px; cursor: pointer; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x: auto">
+<sc-raw-table style="width: 100%; min-width: 1180px; border-collapse: collapse; font-size: 14px">
+<sc-raw-thead>
+<sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">
+<sc-raw-th scope="col" style="padding: 12px 20px; font-weight: 600">Entry</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600">Transport</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600">Isolation</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600">Scenario</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600">State</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600; text-align: right">Runs</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 12px; font-weight: 600">Identities</sc-raw-th>
+<sc-raw-th scope="col" style="padding: 12px 20px; font-weight: 600">Non-results</sc-raw-th>
+</sc-raw-tr>
+</sc-raw-thead>
+<sc-raw-tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE; vertical-align: top">
+<sc-raw-td style="padding: {{pad}} 20px">
+<a href="Series.dc.html" style="font-weight: 600; text-decoration: none">{{r.entry}}</a>
+<div style="font-size: 12px; color: #555C64; margin-top: 2px">{{r.prov}}</div>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">
+<div>{{r.transport}}</div>
+<sc-if value="{{r.hasEra}}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; color: #555C64; margin-top: 2px">era: {{r.era}}</div></sc-if>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">
+<div>{{r.iso}}</div>
+<sc-if value="{{r.unobserved}}" hint-placeholder-val="{{ false }}"><div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; color: #8A3B00; margin-top: 2px">egress not observed</div></sc-if>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px; font-family: 'IBM Plex Mono', monospace; font-size: 13px">{{r.scen}}</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px">
+<span style="display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; background: {{r.stateBg}}; color: {{r.stateFg}}">{{r.state}}</span>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 13px; white-space: nowrap">
+<div>{{r.runs}}</div>
+<div style="font-size: 12px; color: #555C64; margin-top: 2px">{{r.runsNote}}</div>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 12px; font-size: 13px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="background: #DCE6F9; color: #1E3A8A; padding: 2px 8px; border-radius: 4px">{{r.stable}} stable</span>
+<span style="background: #F8E1CC; color: #7A3300; padding: 2px 8px; border-radius: 4px">{{r.flaky}} flaky</span>
+<span style="background: #ECEEF0; color: #3F454B; padding: 2px 8px; border-radius: 4px">{{r.absent}} absent</span>
+<span style="background: #F3ECCF; color: #5C4700; padding: 2px 8px; border-radius: 4px">{{r.undec}} undecided</span>
+</div>
+</sc-raw-td>
+<sc-raw-td style="padding: {{pad}} 20px; font-size: 13px; color: #3F454B; max-width: 280px">{{r.causes}}</sc-raw-td>
+</sc-raw-tr>
+</sc-for>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; gap: 20px">
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Runs that were not results</h2>
+<p style="margin: 0; font-size: 14px; color: #3F454B; line-height: 1.5">A cause the server can bring about keeps the run in the worst case. A run whose causes are all outside the server’s reach is not counted and is run again. <a href="Verdict.dc.html">How a run’s state is read back →</a></p>
+<sc-raw-table style="width: 100%; border-collapse: collapse; font-size: 13px">
+<sc-raw-thead><sc-raw-tr style="text-align: left; color: #555C64; font-size: 12px"><sc-raw-th scope="col" style="padding: 6px 0; font-weight: 600">Cause</sc-raw-th><sc-raw-th scope="col" style="padding: 6px 8px; font-weight: 600">Server can cause</sc-raw-th><sc-raw-th scope="col" style="padding: 6px 0; font-weight: 600; text-align: right">Runs</sc-raw-th><sc-raw-th scope="col" style="padding: 6px 0 6px 12px; font-weight: 600">Treatment</sc-raw-th></sc-raw-tr></sc-raw-thead>
+<sc-raw-tbody style="font-family: 'IBM Plex Mono', monospace">
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0">step_unanswered</sc-raw-td><sc-raw-td style="padding: 8px">yes</sc-raw-td><sc-raw-td style="padding: 8px 0; text-align: right">4</sc-raw-td><sc-raw-td style="padding: 8px 0 8px 12px; font-family: 'IBM Plex Sans', sans-serif">worst case, both directions</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0">images_mismatch</sc-raw-td><sc-raw-td style="padding: 8px">no</sc-raw-td><sc-raw-td style="padding: 8px 0; text-align: right">1</sc-raw-td><sc-raw-td style="padding: 8px 0 8px 12px; font-family: 'IBM Plex Sans', sans-serif">retried, not counted</sc-raw-td></sc-raw-tr>
+<sc-raw-tr style="border-top: 1px solid #E7EAEE"><sc-raw-td style="padding: 8px 0">interrupted</sc-raw-td><sc-raw-td style="padding: 8px">no</sc-raw-td><sc-raw-td style="padding: 8px 0; text-align: right">2</sc-raw-td><sc-raw-td style="padding: 8px 0 8px 12px; font-family: 'IBM Plex Sans', sans-serif">retried, not counted</sc-raw-td></sc-raw-tr>
+</sc-raw-tbody>
+</sc-raw-table>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #DADDE1; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">How to read a class</h2>
+<dl style="margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 10px 16px; font-size: 14px; line-height: 1.45">
+<dt><span style="background: #DCE6F9; color: #1E3A8A; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">stable</span></dt><dd style="margin: 0; color: #3F454B">present at ≥ 80 %, α = β = 0.05 — 14 runs with a hit</dd>
+<dt><span style="background: #F8E1CC; color: #7A3300; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">flaky</span></dt><dd style="margin: 0; color: #3F454B">present, but not at a stable rate; rate and Wilson interval shown</dd>
+<dt><span style="background: #ECEEF0; color: #3F454B; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">absent</span></dt><dd style="margin: 0; color: #3F454B">below 10 % at β = 0.01 — 44 runs (evidence) or 48 (sequential test)</dd>
+<dt><span style="background: #F3ECCF; color: #5C4700; padding: 2px 8px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">undecided</span></dt><dd style="margin: 0; color: #3F454B">budget spent, the data sits between the hypotheses — never new or gone in a comparison</dd>
+</dl>
+<p style="margin: 0; font-size: 13px; color: #555C64">A finding says “signal X fired at place Y”. It is a candidate for a person to look at, never a verdict on the server.</p>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1500}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+  }
+  renderVals() {
+    const tone = {
+      complete: ['#DCEFE4', '#0F5132'],
+      undecided: ['#F3ECCF', '#5C4700'],
+      incomplete: ['#F8E1CC', '#7A3300'],
+      sandbox_failed: ['#E6DDF5', '#4B2A85'],
+      refused: ['#E4E6E9', '#3F454B']
+    };
+    const all = [
+      { entry: 'reference-server', prov: 'reference', transport: 'stdio', era: '', iso: 'runc', scen: 'all-signals', state: 'complete', runs: '48 / 55', runsNote: '7 past n*, filed', stable: 0, flaky: 0, absent: 15, undec: 0, causes: '—' },
+      { entry: 'poison-server', prov: 'poison', transport: 'stdio', era: '', iso: 'runc', scen: 'all-signals', state: 'complete', runs: '48 / 55', runsNote: '7 past n*, filed', stable: 4, flaky: 0, absent: 11, undec: 0, causes: '—' },
+      { entry: 'clock-server', prov: 'reference', transport: 'stdio', era: '', iso: 'runc', scen: 'all-signals', state: 'complete', runs: '62 / 68', runsNote: '1 retried', stable: 1, flaky: 2, absent: 12, undec: 0, causes: 'interrupted ×1 — retried' },
+      { entry: 'weather-http', prov: 'reference', transport: 'streamable-http', era: 'modern · 2026-07-28', iso: 'runc', scen: 'all-signals', state: 'complete', runs: '48 / 54', runsNote: '1 retried', stable: 2, flaky: 0, absent: 13, undec: 0, causes: 'images_mismatch ×1 — retried' },
+      { entry: 'notes-legacy', prov: 'poison', transport: 'streamable-http', era: 'legacy · 2025-11-25', iso: 'runc', scen: 'all-signals', state: 'undecided', runs: '100 / 101', runsNote: '1 retried · 1 unknown', stable: 2, flaky: 1, absent: 11, undec: 1, causes: 'step_unanswered ×1 (stream_broken) · interrupted ×1 — retried' },
+      { entry: 'notes-legacy', prov: 'poison', transport: 'streamable-http', era: 'legacy · 2025-11-25', iso: 'runc', scen: 'tool-poisoning', state: 'complete', runs: '48 / 52', runsNote: '4 past n*, filed', stable: 3, flaky: 0, absent: 12, undec: 0, causes: '—' },
+      { entry: 'docs-search', prov: 'real-world · endpoint', transport: 'streamable-http', era: 'modern · 2026-07-28', iso: 'remote', scen: 'all-signals', state: 'incomplete', runs: '100 / 100', runsNote: '1 per origin · 10 s apart', stable: 1, flaky: 0, absent: 0, undec: 0, causes: 'step_unanswered ×3 (rate_limited) — “absent” unreachable for 14 identities' },
+      { entry: 'shell-tools', prov: 'real-world', transport: 'stdio', era: '', iso: '—', scen: 'all-signals', state: 'refused', runs: '0 / 0', runsNote: 'not run', stable: 0, flaky: 0, absent: 0, undec: 0, causes: 'needs gVisor (runsc) — refused, never downgraded' }
+    ];
+    const rows = all
+      .filter((r) => this.state.filter === 'all' || r.state === this.state.filter)
+      .map((r) => ({
+        ...r,
+        hasEra: r.era !== '',
+        unobserved: r.iso === 'remote',
+        stateBg: tone[r.state][0],
+        stateFg: tone[r.state][1]
+      }));
+    const opts = [['all', 'All 8'], ['complete', 'Complete 5'], ['undecided', 'Undecided 1'], ['incomplete', 'Incomplete 1'], ['refused', 'Refused 1']];
+    const filters = opts.map(([id, label]) => {
+      const on = this.state.filter === id;
+      return {
+        label,
+        pressed: on ? 'true' : 'false',
+        bg: on ? '#14171A' : '#FFFFFF',
+        fg: on ? '#FFFFFF' : '#14171A',
+        border: on ? '#14171A' : '#C3C8CE',
+        pick: () => this.setState({ filter: id })
+      };
+    });
+    return { rows, filters, pad: (this.props.compact ?? false) ? '8px' : '14px' };
+  }
+}
+</script>
+
+
+</body></html>

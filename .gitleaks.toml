@@ -1,0 +1,16 @@
+# gitleaks reads this file from the repository root: the default rules, and the four test keys it
+# passes over.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Test-only server keys for certificates issued by a throw-away CA whose own keys were destroyed; see tests/fixtures/tls/README.md."
+# Each key by its full path: a file added to the directory later is scanned. The endpoint TLS
+# tests need these keys.
+paths = [
+    '''^tests/fixtures/tls/foreign\.key$''',
+    '''^tests/fixtures/tls/ip-127-0-0-2\.key$''',
+    '''^tests/fixtures/tls/localhost\.key$''',
+    '''^tests/fixtures/tls/other\.key$''',
+]

@@ -1,0 +1,10 @@
+version: 1
+name: fetch-note
+steps:
+  - initialize
+  - list: tools/list
+  - call:
+      tool: fetch_note
+      arguments: {url: "{fixture_url}/canary.html"}
+      check: result.content[*].text
+      timeout: 30

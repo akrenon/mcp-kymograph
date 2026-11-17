@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Terminal — Ctrl-C, fleet runs, proxy exit code</title>
+<script src="54011b58-e2cb-499e-9b74-73b9bd653dc3"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#7EA6F2}a:hover{color:#A9C4F7}
+</style>
+</helmet>
+<div style="width: 1100px; height: 1060px; box-sizing: border-box; background: #E7EAEE; padding: 24px; font-family: 'IBM Plex Mono', monospace">
+<div style="height: 100%; display: flex; flex-direction: column; background: #0F1216; border-radius: 10px; overflow: hidden; border: 1px solid #2B3036">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #1A1E23; border-bottom: 1px solid #2B3036">
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="width: 12px; height: 12px; border-radius: 6px; background: #3A4047"></span>
+<span style="flex-grow: 1; text-align: center; font-size: 12px; color: #8C939B">~/assessments/corpus — zsh</span>
+</div>
+<div style="flex-grow: 1; padding: 18px 20px; font-size: 12.5px; line-height: 1.55; color: #D7DBE0; white-space: pre; overflow: hidden"><span style="color: #8C939B"># 1 · Ctrl-C in a fleet: nothing of it keeps running, nothing is dressed up</span>
+<span style="color: #7CCB9B">$</span> kymograph fleet run --manifest corpus.yaml --store findings.sqlite --repeat --parallel 4
+kymograph: fleet f-0043 · 8 keys · repeat on · budget 100 runs/key
+  reference-server × all-signals    12 of 14 run    <span style="color: #7EA6F2">█████░░░░░░░░░░░░░░░</span>
+  poison-server × all-signals        9 of 12 run    <span style="color: #7EA6F2">████░░░░░░░░░░░░░░░░</span>
+^C
+kymograph: <span style="color: #F0A15E">interrupted (SIGINT)</span> · SIGTERM to 4 runs · each stops its server, removes its containers, writes its ending
+kymograph: 3 runs ended within 10 s · 1 still there → SIGKILL · its containers and staging dir found by nonce 4f2a…, removed
+kymograph: filed 21 runs that had ended · 4 not filed (unfiled · interrupted) · a stopped run’s recording is named, not judged
+{"fleet": "f-0043", "interrupted": "SIGINT", "state": "incomplete",
+ "results": {"filed": 21, "unfiled": 4}, "problems": []}                                   <span style="color: #8C939B">exit 3</span>
+
+<span style="color: #8C939B"># 2 · the fleet runs a store holds — rules version kept with each</span>
+<span style="color: #7CCB9B">$</span> kymograph fleet runs --store findings.sqlite
+  fleet    started               keys  state        rules  digest cmp      interrupted
+  f-0043   2026-10-27 08:41 UTC   8    incomplete   v4     —                SIGINT
+  f-0042   2026-10-08 09:14 UTC   8    incomplete   v4     3f9a…c210        —
+  f-0041   2026-10-01 09:02 UTC   8    complete     v4     e71c…88d0        —
+  f-0040   2026-09-24 09:10 UTC   7    complete     <span style="color: #F0A15E">v3</span>     b02e…1a4f        —
+kymograph: f-0040 was judged under rules v3 — a diff against it says so; states may differ by the rules alone
+
+<span style="color: #8C939B"># 3 · Ctrl-C where no run or fleet can record it</span>
+<span style="color: #7CCB9B">$</span> kymograph store ingest --store findings.sqlite runs/2026100*
+kymograph: filed runs/20261008T081133-2be0 (complete)
+kymograph: filed runs/20261008T091702-7f3c (complete)
+^C
+kymograph: interrupted · 2 of 6 filed, each whole or not at all · run the command again            <span style="color: #8C939B">exit 130</span>
+
+<span style="color: #8C939B"># 4 · proxy mode: the exit code is the server’s, and the terminal says when that is ambiguous</span>
+<span style="color: #8C939B">   (started by the client from its own config; our stdout is the protocol channel)</span>
+  →  request    initialize                            301 B
+  ←  result     #1                                    1.2 kB
+  →  request    tools/list                             96 B
+  ←  result     #2                                    6.8 kB
+  →  request    tools/call                            212 B
+  ←  error      #3                                    188 B
+kymograph: client closed its end · server exited with 3
+kymograph: <span style="color: #F0A15E">exit 3 is the server’s own, handed through — not this tool’s “incomplete”.</span> The run is complete:
+            runs/20261027T084410-9b1e/events.jsonl                                            <span style="color: #8C939B">exit 3</span>
+
+<span style="color: #8C939B"># 5 · an input error is refused when the arguments are read — never a run that ends in some state</span>
+<span style="color: #7CCB9B">$</span> kymograph drive --step-timeout 1 --out-dir runs -- my-server
+kymograph: <span style="color: #F28B82">--step-timeout: must be at least 2 s, not 1: the first step includes the server's own start,</span>
+<span style="color: #F28B82">            and a shorter wait would decide the run, not the server</span>                              <span style="color: #8C939B">exit 2</span>
+<span style="color: #7CCB9B">$</span> <span style="background: #D7DBE0; color: #0F1216"> </span></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:1060}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+
+
+</body></html>

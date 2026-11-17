@@ -1,0 +1,84 @@
+{
+  "created_utc": "2026-11-17T11:41:44.118130Z",
+  "derived_from": "0994dddb3d5a40092ffe443330b3bf4a0a5e55560be7a51f48d6e34537ce442f",
+  "engagement": {
+    "engagement_digest": "5a4238d21034bbe280976cdd9b22c990e7468a78995ee4d0e58208407546bd20",
+    "engagement_id_declared": "acme-2026-11"
+  },
+  "files": [
+    {
+      "digest_note": "sha256 is the digest of this file: the engagement file as JSON, without what removed names. source_digest is the digest of the engagement file's own bytes, the one every recording and the store's chain name. They differ because this is not that file.",
+      "path": "engagement.json",
+      "removed": [
+        "contacts",
+        "reference",
+        "redaction.mask_patterns",
+        "declared.servers[].owner_contact",
+        "identities[].token_file",
+        "known_values",
+        "emergency",
+        "salt_env",
+        "receiver.key_env",
+        "receiver.ssh",
+        "receiver.path_prefix",
+        "agency.contacts"
+      ],
+      "role": "engagement",
+      "sha256": "2d55737f2882169f9ee43a9658f2dee44ab14c3f9e63c17b13d386e10688de56",
+      "size": 705,
+      "source_digest": "5a4238d21034bbe280976cdd9b22c990e7468a78995ee4d0e58208407546bd20"
+    },
+    {
+      "path": "redactions.json",
+      "role": "redactions",
+      "sha256": "efe0bef31f2b8c216097a0b38cf029fd02d5f06fe245db91e94e341893db512f",
+      "size": 405
+    },
+    {
+      "egress_observed": false,
+      "entry": null,
+      "filed": false,
+      "images": {
+        "sandbox": null,
+        "target": null
+      },
+      "isolation": "host",
+      "mode": "driver",
+      "path": "runs/80f72f28/events.jsonl",
+      "redacted": false,
+      "role": "recording",
+      "run": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "scenario": null,
+      "sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "size": 9086,
+      "source_sha256": "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f",
+      "state": "complete"
+    },
+    {
+      "path": "scripts/cd8c1e0b70a7768f82b916983e92fb63ce22f528566e66a79fe95540cfd914c9.json",
+      "pseudonyms": "as_recordings",
+      "replayable": true,
+      "role": "script",
+      "runs": [
+        "7c98f10fe51e37160a1fee91f45c3aea21c63d58d3d50f47be6e0981fff8266f"
+      ],
+      "sha256": "c0c445449887155e70325ad6c6c1027957ebe242309c7f1ace2c19218ecdd60d",
+      "size": 205,
+      "source_digest": "cd8c1e0b70a7768f82b916983e92fb63ce22f528566e66a79fe95540cfd914c9"
+    },
+    {
+      "path": "tool.json",
+      "role": "tool",
+      "sha256": "47ecf78a58e9903ebb29feba54c142482b7f018857477cbd499cada5b88bea22",
+      "size": 210
+    }
+  ],
+  "index_version": 1,
+  "note": "The fields of a recording's entry beside path, sha256, size and role (run, state, entry, scenario, mode, filed, isolation, egress_observed) are convenience copies made at pack time, from the store for a filed run and from the recording's verdict for a session; the recording itself is authoritative. This bundle was derived from the one whose index digest is derived_from, for a handover: a recording whose entry says redacted true differs from the recording first filed, whose SHA-256 is its source_sha256, and redactions.json names each place a value was blanked and the rule that did it, never the value. It holds no store.",
+  "page_version": 1,
+  "triage": {
+    "open": 0,
+    "question": 0,
+    "untriaged": 0
+  }
+}

@@ -1,0 +1,48 @@
+# Run output. Recordings may contain customer traffic and must never be
+# committed. This entry exists before the tool is able to produce a single run.
+/runs/
+*.jsonl
+
+# The one exception, deliberately narrow and anchored to a single directory: reference
+# transcripts used as fixtures. These are synthetic, written by hand or by a test, and
+# contain no traffic from anywhere — but a test that reads one has to be able to read it on
+# a fresh clone and in CI, and the rule above would otherwise leave the file behind on the
+# machine that wrote it. Nothing produced by a real run may be placed here.
+!/tests/fixtures/*.jsonl
+
+# Local, non-shared configuration
+*.local.toml
+*.local.json
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+
+# The finding store: keys, locators and server names from runs, no message content, but
+# still assessment data. Kept out of the repository like the recordings it is built from.
+*.sqlite
+*.sqlite-journal
+
+# The export builds its tree here before it is checked, and keeps the old target here for a
+# moment; an abort leaves them behind.
+benchmarks/local-servers/.results.partial/
+benchmarks/local-servers/.results.old/

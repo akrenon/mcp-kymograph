@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Least privilege: no job here writes to the repository, and no job uses a secret.
+permissions:
+  contents: read
+
+# A newer push to the same pull request cancels the run before it. A run on main is never
+# cancelled.
+concurrency:
+  group: ci-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('run-{0}', github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    name: test and lint (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    # The suite without the Docker tests takes about half an hour on a small machine.
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # checkout leaves the job token in .git/config unless told not to.
+          # Nothing here pushes, so no later step should be able to.
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: "0.13.0"
+          enable-cache: false
+      - name: Install
+        run: uv sync --locked --python ${{ matrix.python-version }}
+      - name: Lint
+        if: matrix.python-version == '3.12'
+        run: uv run ruff check --output-format=github .
+      - name: Format check
+        if: matrix.python-version == '3.12'
+        run: uv run ruff format --check .
+      # The tests marked docker and real_server need images this workflow does not build.
+      # They are deselected here by name, so the summary does not report them as skipped.
+      - name: Test (without Docker)
+        run: uv run pytest -m "not docker and not real_server"
+      # The release workflow builds the same way. A build that breaks shows here, not on the day
+      # of a release.
+      - name: Build sdist and wheel
+        if: matrix.python-version == '3.12'
+        run: uv build

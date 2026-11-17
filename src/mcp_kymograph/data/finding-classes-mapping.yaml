@@ -1,0 +1,103 @@
+# Mapping from finding classes to entries of outside frameworks. Open data, checked by
+# mcp_kymograph.finding_classes.load_mapping (docs/finding-classes.md).
+#
+# `ref` is a bare number or ID, never a title or text from the source. Every framework has a
+# `version` (a string) and `retrieved`, the day (YYYY-MM-DD) the IDs were read from the source;
+# `date` is the date of that edition, or null, and the `note` says which date it is when it is not
+# the publication. Every entry is `confirmed: false`, a draft: only a maintainer who has checked
+# it against the source sets `confirmed: true`, at acceptance.
+frameworks:
+  - id: owasp-mcp-top10
+    name: "OWASP MCP Top 10"
+    version: "2025"
+    retrieved: "2026-11-04"
+    date: null
+    note: "Beta per the project roadmap. No version or publication date beyond the edition label."
+  - id: owasp-mcp-stg
+    name: "OWASP MCP Security Testing Guide"
+    version: "1.0 (draft)"
+    retrieved: "2026-11-04"
+    date: null
+    note: "Community guidance, not an official OWASP project document."
+  - id: acs-llm-pentest
+    name: "ACS Leitfaden für Penetrationstests von Large-Language-Modellen (LLMs)"
+    version: "1.0"
+    retrieved: "2026-11-04"
+    date: "2025-09-24"
+    note: "Published on the ACS site on 2025-09-29. Only the test points A 6.4.19.1 and A 6.4.19.2."
+  - id: cosai-mcp
+    name: "CoSAI Model Context Protocol (MCP) Security"
+    version: "2.0"
+    retrieved: "2026-11-04"
+    date: "2026-08-12"
+    note: "Threat categories MCP-T1 to MCP-T12."
+  - id: owasp-llm-top10
+    name: "OWASP Top 10 for LLM Applications"
+    version: "2025"
+    retrieved: "2026-11-04"
+    date: null
+    note: ""
+  - id: mitre-atlas
+    name: "MITRE ATLAS"
+    version: "2026.10"
+    retrieved: "2026-11-04"
+    date: "2026-10-28"
+    note: ""
+  - id: iso-27001
+    name: "ISO/IEC 27001"
+    version: "2022"
+    retrieved: "2026-11-04"
+    date: null
+    note: "Context for an audit as a whole, not for a class: controls A.8.29, A.5.19 to A.5.22 and A.8.30. Numbers only."
+  - id: nis2-bsig
+    name: "BSIG as amended by the NIS2UmsuCG"
+    version: "BGBl. I 2025 Nr. 301"
+    retrieved: "2026-11-04"
+    date: "2025-12-06"
+    note: "Date of entry into force. Section 30; context for an audit as a whole, not for a class."
+  - id: dora
+    name: "DORA, Regulation (EU) 2022/2554"
+    version: "2022/2554"
+    retrieved: "2026-11-04"
+    date: "2025-01-17"
+    note: "Date of application. Article 30; context for an audit as a whole, not for a class."
+  - id: eu-ai-act
+    name: "EU AI Act, Regulation (EU) 2024/1689"
+    version: "2024/1689"
+    retrieved: "2026-11-04"
+    date: "2024-08-01"
+    note: "Date of entry into force. Article 15; context for an audit as a whole, not for a class."
+classes:
+  - id: AKR-01
+    entries:
+      - {framework: owasp-mcp-top10, ref: "MCP03:2025", confirmed: false}
+      - {framework: mitre-atlas, ref: "AML.T0068", confirmed: false}
+      - {framework: mitre-atlas, ref: "AML.T0051.001", confirmed: false}
+      - {framework: owasp-llm-top10, ref: "LLM01:2025", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-TOOL-01", confirmed: false}
+  - id: AKR-02
+    entries:
+      - {framework: owasp-mcp-top10, ref: "MCP03:2025", confirmed: false}
+      - {framework: acs-llm-pentest, ref: "A 6.4.19.1", confirmed: false}
+      - {framework: cosai-mcp, ref: "MCP-T4", confirmed: false}
+      - {framework: mitre-atlas, ref: "AML.T0051", confirmed: false}
+      - {framework: mitre-atlas, ref: "AML.T0011.002", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-TOOL-01", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-PRMT-03", confirmed: false}
+      - {framework: owasp-llm-top10, ref: "LLM01:2025", confirmed: false}
+  - id: AKR-03
+    entries:
+      - {framework: mitre-atlas, ref: "AML.T0069.001", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-PRMT-05", confirmed: false}
+      - {framework: owasp-llm-top10, ref: "LLM01:2025", confirmed: false}
+  - id: AKR-04
+    entries:
+      - {framework: mitre-atlas, ref: "AML.T0051.001", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-PRMT-02", confirmed: false}
+      - {framework: owasp-llm-top10, ref: "LLM01:2025", confirmed: false}
+  - id: AKR-05
+    entries:
+      - {framework: acs-llm-pentest, ref: "A 6.4.19.2", confirmed: false}
+      - {framework: cosai-mcp, ref: "MCP-T6", confirmed: false}
+      - {framework: mitre-atlas, ref: "AML.T0074", confirmed: false}
+      - {framework: owasp-mcp-stg, ref: "MCPSTG-TOOL-05", confirmed: false}

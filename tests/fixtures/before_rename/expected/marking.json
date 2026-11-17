@@ -1,0 +1,32 @@
+{
+  "run": {
+    "state": "complete",
+    "causes": []
+  },
+  "observation": "an observation, not a severity",
+  "engagement": "acme-2026-11",
+  "marking": "delimited",
+  "deliveries": [
+    {
+      "canary": "page-1",
+      "seq": 12,
+      "path": "result.content[0].resource.text",
+      "occurrence": 1,
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "marking": "delimited",
+      "to_confirm": [
+        "code-fence"
+      ],
+      "notes": [
+        "breakout_unchecked"
+      ]
+    }
+  ],
+  "not_delivered": [
+    "row-7"
+  ],
+  "not_read": 0
+}

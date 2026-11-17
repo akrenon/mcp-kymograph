@@ -1,0 +1,20 @@
+# The statements the hostile fixture is read with: one per place a signal can fire on, so
+# every hostile value that a signal reads leaves a finding behind. The description is hostile
+# on purpose: a scenario's text is a string off the wire for the web interface too.
+version: 1
+name: hostile-scenario
+description: "<b>bold</b>"
+
+observations:
+  - name: descriptions-hidden_html
+    match: {method: tools/list}
+    path: result.tools[*].description
+    signals: [hidden_html, invisible_characters, embedded_url]
+  - name: names-tool_name_lookalike
+    match: {method: tools/list}
+    path: result.tools[*].name
+    signals: [tool_name_lookalike]
+  - name: prompts-instruction_override
+    match: {method: prompts/list}
+    path: result.prompts[*].description
+    signals: [instruction_override]
