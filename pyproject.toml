@@ -37,13 +37,13 @@ mcp-kymograph = "mcp_kymograph.cli:main"
 # to JSON's data model (src/mcp_kymograph/scenario.py), never through yaml.load's default.
 [project.optional-dependencies]
 yaml = [
-    "pyyaml==6.0.3",
+    "pyyaml==6.0.4",
 ]
 
 [dependency-groups]
 dev = [
     "pytest==9.2.0",
-    "pyyaml==6.0.3",
+    "pyyaml==6.0.4",
     "ruff==0.17.5",
 ]
 
